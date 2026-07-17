@@ -1,0 +1,8 @@
+{
+  "name": "BPMF - CicloAventuras",
+  "description": "Plataforma de cicloturismo premium da BPMF (Bora Pedalar Meu Filho) para planejamento de rotas (começando pela Rota da Luz), divisão de gastos, checklist de equipamentos, e geração de pautas de conteúdo.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
