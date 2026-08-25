@@ -1,0 +1,15 @@
+{
+  "_comentario": "Cada turma é uma edição real do evento para um grupo específico de clientes. status 'ativa' aparece no app; 'arquivada' fica invisível mesmo que o PIN seja digitado corretamente. Para virar a turma: mude o status da atual para 'arquivada' e adicione um novo objeto com PIN novo. Nunca reaproveite um PIN já usado.",
+  "turmas": [
+    {
+      "id": "turma-piloto-ago2026",
+      "aventuraId": "rota-da-luz",
+      "pin": "ROTA2026",
+      "label": "Rota da Luz — Turma Piloto (Alexandre + 2 amigos)",
+      "status": "ativa",
+      "dataInicio": "2026-09-04",
+      "dataFim": "2026-09-07",
+      "participantesPadrao": ["Alexandre", "Amigo 1", "Amigo 2"]
+    }
+  ]
+}

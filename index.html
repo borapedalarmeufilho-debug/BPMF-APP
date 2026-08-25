@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BPMF CicloAventuras</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#050505">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+:root{
+  --bg:#050505;
+  --neon:#39FF14;
+  --white:#FFFFFF;
+  --gray:#2D3748;
+  --card:#111318;
+  --card2:#161a21;
+  --muted:#9aa3af;
+  --danger:#ff4d4f;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--white);font-family:Inter,Roboto,-apple-system,Segoe UI,sans-serif;padding-bottom:78px;}
+.italic-logo{font-style:italic;font-weight:900;letter-spacing:.5px;}
+h1,h2,h3{font-family:Oswald,Montserrat,Inter,sans-serif;font-style:italic;letter-spacing:.3px;margin:0 0 8px;}
+h1{font-size:20px;} h2{font-size:16px;} h3{font-size:13px;text-transform:uppercase;color:var(--neon);}
+p{line-height:1.45;font-size:13.5px;color:#dfe3e8;}
+.muted{color:var(--muted);}
+a{color:var(--neon);}
+.wrap{max-width:640px;margin:0 auto;padding:16px;}
+.card{background:var(--card);border:1px solid #1f232b;border-radius:14px;padding:16px;margin-bottom:14px;}
+.btn{display:inline-block;background:var(--neon);color:#050505;font-weight:800;border:none;border-radius:10px;padding:10px 16px;font-size:13px;cursor:pointer;text-decoration:none;text-align:center;}
+.btn.ghost{background:transparent;color:var(--neon);border:1.5px solid var(--neon);}
+.btn.sm{padding:6px 10px;font-size:12px;}
+.btn.block{display:block;width:100%;}
+input,select,textarea{width:100%;background:#0c0e12;border:1px solid #262b34;color:var(--white);border-radius:8px;padding:10px;font-size:14px;margin-bottom:8px;font-family:inherit;}
+label.field{display:block;font-size:11px;color:var(--muted);margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px;}
+
+/* PIN GATE */
+#pinGate{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;}
+.emblem{width:110px;height:110px;border-radius:50%;border:3px solid var(--neon);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;}
+.emblem span{font-style:italic;font-weight:900;font-size:26px;}
+#pinGate .card{max-width:360px;width:100%;text-align:center;}
+#pinError{color:var(--danger);font-size:12.5px;min-height:16px;}
+
+/* NAV */
+nav.bottom{position:fixed;bottom:0;left:0;right:0;background:#0a0c10;border-top:1px solid #1f232b;display:flex;z-index:50;}
+nav.bottom button{flex:1;background:none;border:none;color:var(--muted);font-size:10px;padding:8px 2px 10px;display:flex;flex-direction:column;align-items:center;gap:3px;font-family:inherit;}
+nav.bottom button.active{color:var(--neon);}
+nav.bottom button .ic{font-size:16px;}
+header.top{position:sticky;top:0;background:rgba(5,5,5,.92);backdrop-filter:blur(6px);z-index:40;border-bottom:1px solid #1f232b;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;}
+.tab{display:none;} .tab.active{display:block;}
+
+/* progress bar */
+.pbar-bg{background:#1a1d23;border-radius:8px;height:8px;overflow:hidden;margin:8px 0;}
+.pbar-fill{background:var(--neon);height:100%;border-radius:8px;transition:width .3s;}
+
+.day-card{background:var(--card2);border:1px solid #1f232b;border-radius:12px;margin-bottom:10px;overflow:hidden;}
+.day-card summary{list-style:none;cursor:pointer;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;}
+.day-card summary::-webkit-details-marker{display:none;}
+.day-num{width:26px;height:26px;border-radius:50%;background:var(--neon);color:#050505;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:12px;margin-right:10px;}
+.day-title-wrap{display:flex;align-items:center;}
+.day-body{padding:0 14px 14px;}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0;}
+.kv{background:#0c0e12;border-radius:8px;padding:8px;text-align:center;}
+.kv b{display:block;font-size:14px;} .kv span{font-size:10px;color:var(--muted);text-transform:uppercase;}
+.alert-box{background:#241a0a;border:1px solid #b8860022;border-left:3px solid #ffb020;border-radius:8px;padding:10px;font-size:12.5px;margin:10px 0;color:#ffdca0;}
+.parada,.pousada{background:#0c0e12;border-radius:8px;padding:10px;margin-bottom:8px;}
+.parada-top,.pousada-top{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:4px;}
+.km-badge{background:var(--gray);color:#fff;font-size:10px;border-radius:6px;padding:2px 6px;}
+.tag-parada,.tag-rec{background:var(--neon);color:#050505;font-size:9.5px;font-weight:800;border-radius:6px;padding:2px 6px;text-transform:uppercase;}
+.idea-line{color:#c9f9d2;font-size:12px;}
+.check-item{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #1a1d23;}
+.check-item.done label{color:var(--muted);text-decoration:line-through;}
+input[type=checkbox]{width:18px;height:18px;accent-color:var(--neon);flex-shrink:0;}
+table{width:100%;border-collapse:collapse;font-size:12.5px;}
+th,td{text-align:left;padding:6px 4px;border-bottom:1px solid #1a1d23;}
+.num{text-align:right;}
+.del-btn{background:none;border:none;color:var(--danger);font-size:14px;cursor:pointer;}
+.balance-item{display:flex;justify-content:space-between;background:#0c0e12;border-radius:8px;padding:8px 10px;margin-bottom:6px;font-size:12.5px;}
+.porta-tag{background:var(--gray);color:#fff;font-size:10px;border-radius:6px;padding:3px 8px;display:inline-block;margin-bottom:6px;}
+.speech-row{background:#0c0e12;border-radius:8px;padding:8px 10px;margin-bottom:6px;}
+.speech-t{font-size:10.5px;color:var(--neon);display:flex;justify-content:space-between;}
+.fase-tag{color:var(--muted);}
+.speech-txt{font-size:12.5px;margin:4px 0;font-style:italic;}
+.speech-meta{font-size:11px;color:var(--muted);}
+.slide-card{background:#0c0e12;border-radius:8px;padding:10px;margin-bottom:8px;}
+.slide-head{display:flex;align-items:center;gap:6px;margin-bottom:4px;}
+.slide-num{background:var(--neon);color:#050505;width:18px;height:18px;border-radius:50%;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;}
+.ai-prompt-box{white-space:pre-wrap;background:#000;padding:8px;border-radius:6px;font-size:10.5px;color:#8fd;max-height:220px;overflow:auto;}
+.gen-box{background:#0c0e12;border-radius:8px;padding:10px;font-size:12.5px;white-space:pre-wrap;}
+.city-block{background:#0c0e12;border-radius:8px;padding:10px;margin-bottom:8px;}
+#gpxMap{height:320px;border-radius:12px;margin:10px 0;background:#0c0e12;}
+.day-pick{display:flex;gap:6px;margin-bottom:10px;}
+.day-pick button{flex:1;background:#0c0e12;border:1px solid #262b34;color:var(--white);border-radius:8px;padding:8px;font-size:12px;}
+.day-pick button.active{background:var(--neon);color:#050505;font-weight:800;border-color:var(--neon);}
+.gpx-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:10px;}
+.linkrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;}
+.offline-banner{background:#0c1a10;border:1px solid #1e4d2a;border-radius:10px;padding:10px 12px;font-size:12px;margin-bottom:12px;display:none;}
+.offline-banner.show{display:block;}
+#downloadStatus{font-size:11.5px;color:var(--muted);margin-top:6px;}
+</style>
+</head>
+<body>
+
+<!-- ================= PIN GATE ================= -->
+<div id="pinGate">
+  <div class="card">
+    <div class="emblem"><span class="italic-logo">BPMF</span></div>
+    <h1 style="text-align:center;">Cicло<span class="italic-logo">Aventuras</span></h1>
+    <p class="muted">Digite o código de acesso da sua turma para entrar.</p>
+    <label class="field">Código da turma</label>
+    <input id="pinInput" type="text" placeholder="Ex: ROTA2026" autocapitalize="characters" autocomplete="off">
+    <div id="pinError"></div>
+    <button class="btn block" onclick="tryPin()">Entrar</button>
+  </div>
+</div>
+
+<!-- ================= APP SHELL ================= -->
+<div id="appShell" style="display:none;">
+  <header class="top">
+    <div><span class="italic-logo" style="color:var(--white);">BPMF</span> <span class="muted" style="font-size:12px;">CicloAventuras</span></div>
+    <button class="btn ghost sm" onclick="logoutTurma()">Sair</button>
+  </header>
+
+  <div class="wrap">
+    <div id="offlineBanner" class="offline-banner"></div>
+
+    <!-- HOME -->
+    <section class="tab active" id="tab-home">
+      <div class="card">
+        <h2 id="aventuraTitulo">—</h2>
+        <p class="muted" id="aventuraSubtitulo"></p>
+        <div class="pbar-bg"><div class="pbar-fill" id="homeProgressBar" style="width:0%;"></div></div>
+        <p style="font-size:12px;" id="homeProgressLabel">0 km rodados</p>
+        <div class="grid2">
+          <div class="kv"><b id="statKmDone">0</b><span>Km feitos</span></div>
+          <div class="kv"><b id="statKmLeft">0</b><span>Km restantes</span></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3 id="statusPill">—</h3>
+        <div id="todayContent"><p class="muted">Carregando…</p></div>
+      </div>
+      <div class="card">
+        <h3>Baixar para usar offline</h3>
+        <p class="muted">Baixe o conteúdo da aventura antes de sair de área com sinal — igual baixar um episódio pra assistir depois.</p>
+        <button class="btn block" id="downloadBtn" onclick="baixarAventura()">⬇️ Baixar Aventura</button>
+        <div id="downloadStatus"></div>
+      </div>
+    </section>
+
+    <!-- ROTA / MAPA -->
+    <section class="tab" id="tab-rota">
+      <div class="card">
+        <h2>Rota &amp; Mapa</h2>
+        <p class="muted" id="rotaFonte"></p>
+        <div class="day-pick" id="dayPicker"></div>
+        <div id="gpxMap"></div>
+        <div class="gpx-stats" id="gpxStats"></div>
+        <div class="linkrow" id="rotaLinks"></div>
+      </div>
+    </section>
+
+    <!-- CRONOGRAMA -->
+    <section class="tab" id="tab-cronograma">
+      <div class="card"><h2>Cronograma</h2><p class="muted">Toque em cada dia para ver paradas, pousadas e alertas.</p></div>
+      <div id="daysContainer"></div>
+    </section>
+
+    <!-- CHECKLIST -->
+    <section class="tab" id="tab-checklist">
+      <div class="card">
+        <h2>Checklist</h2>
+        <div class="pbar-bg"><div class="pbar-fill" id="checkProgressBar" style="width:0%;"></div></div>
+        <p style="font-size:12px;" id="checkProgressLabel">0 de 0 itens conferidos</p>
+        <button class="btn ghost sm" onclick="resetChecklist()">Zerar checklist</button>
+      </div>
+      <div id="checklistContainer"></div>
+    </section>
+
+    <!-- GASTOS -->
+    <section class="tab" id="tab-gastos">
+      <div class="card">
+        <h2>Gastos da turma</h2>
+        <p class="muted">Cada celular registra os próprios gastos (o app funciona offline, sem sincronizar entre aparelhos). Comparem os totais no fim do dia e usem o Backup para juntar tudo se quiser.</p>
+        <label class="field">Descrição</label><input id="expDesc" placeholder="Ex: Jantar em Redenção da Serra">
+        <label class="field">Valor (R$)</label><input id="expValor" type="number" step="0.01">
+        <label class="field">Categoria</label>
+        <select id="expCat"><option>Hospedagem</option><option>Alimentação</option><option>Transporte</option><option>Equipamento</option><option>Outro</option></select>
+        <label class="field">Quem pagou</label><select id="expQuem"></select>
+        <label class="field">Como divide</label>
+        <select id="expDivide"><option value="todos">Dividir com todos</option><option value="individual">Só quem pagou</option></select>
+        <button class="btn block" onclick="addExpense()">Adicionar gasto</button>
+      </div>
+      <div class="card">
+        <h3>Lançamentos</h3>
+        <table><thead><tr><th>Descrição</th><th>Cat.</th><th>Quem</th><th class="num">Valor</th><th></th></tr></thead><tbody id="expenseTableBody"></tbody></table>
+        <p style="margin-top:10px;">Total: <b id="totalGasto">R$ 0,00</b> · Por pessoa: <b id="perPessoa">R$ 0,00</b></p>
+      </div>
+      <div class="card"><h3>Quem deve pra quem</h3><div id="balanceContainer"></div></div>
+    </section>
+
+    <!-- CONTEÚDO -->
+    <section class="tab" id="tab-conteudo">
+      <div class="card">
+        <h2>Pauta de Mídias Sociais</h2>
+        <p class="muted">Roteiro pronto por etapa da viagem — Reel, Carrossel, speech e AI Prompt de imagem.</p>
+      </div>
+      <div id="stagesContainer"></div>
+    </section>
+
+    <!-- EMERGÊNCIA -->
+    <section class="tab" id="tab-emergencia">
+      <div class="card">
+        <h2>🆘 Guia de Emergência</h2>
+        <p class="muted">Números nacionais: SAMU <b>192</b> · Bombeiros <b>193</b> · Polícia <b>190</b> · Defesa Civil <b>199</b></p>
+      </div>
+      <div id="citiesContainer"></div>
+    </section>
+  </div>
+
+  <nav class="bottom">
+    <button data-tab="home" class="active" onclick="showTab('home')"><span class="ic">🏠</span>Home</button>
+    <button data-tab="rota" onclick="showTab('rota')"><span class="ic">🗺️</span>Rota</button>
+    <button data-tab="cronograma" onclick="showTab('cronograma')"><span class="ic">📅</span>Dias</button>
+    <button data-tab="checklist" onclick="showTab('checklist')"><span class="ic">✅</span>Check</button>
+    <button data-tab="gastos" onclick="showTab('gastos')"><span class="ic">💰</span>Gastos</button>
+    <button data-tab="conteudo" onclick="showTab('conteudo')"><span class="ic">🎬</span>Conteúdo</button>
+    <button data-tab="emergencia" onclick="showTab('emergencia')"><span class="ic">🆘</span>SOS</button>
+  </nav>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/leaflet-gpx@1.7.0/gpx.js"></script>
+<script>
+/* ===================== BOOTSTRAP / PIN GATE ===================== */
+let TURMAS = null;
+let TURMA = null;
+let AVENTURA = null;
+
+async function boot(){
+  TURMAS = await (await fetch('turmas.json')).json();
+  const savedTurmaId = localStorage.getItem('bpmf_ca_turma_atual');
+  if(savedTurmaId){
+    const t = TURMAS.turmas.find(t=>t.id===savedTurmaId && t.status==='ativa');
+    if(t){ await enterTurma(t); return; }
+    localStorage.removeItem('bpmf_ca_turma_atual');
+  }
+}
+async function tryPin(){
+  const pin = document.getElementById('pinInput').value.trim().toUpperCase();
+  const err = document.getElementById('pinError');
+  err.textContent = '';
+  if(!pin){ err.textContent = 'Digite o código.'; return; }
+  const t = TURMAS.turmas.find(t=>t.pin.toUpperCase()===pin);
+  if(!t){ err.textContent = 'Código não encontrado.'; return; }
+  if(t.status!=='ativa'){ err.textContent = 'Esta turma já foi encerrada/arquivada.'; return; }
+  await enterTurma(t);
+}
+async function enterTurma(t){
+  TURMA = t;
+  AVENTURA = await (await fetch(t.aventuraId+'.json')).json();
+  localStorage.setItem('bpmf_ca_turma_atual', t.id);
+  loadState();
+  document.getElementById('pinGate').style.display = 'none';
+  document.getElementById('appShell').style.display = 'block';
+  renderAll();
+  checkOfflineStatus();
+}
+function logoutTurma(){
+  localStorage.removeItem('bpmf_ca_turma_atual');
+  location.reload();
+}
+boot();
+
+/* ===================== STATE ===================== */
+let state = { checklist:{}, expenses:[], daysDone:{}, people:["Alexandre","Amigo 1","Amigo 2"] };
+function lsKey(){ return 'bpmf_ca_state_'+(TURMA?TURMA.id:'x'); }
+function loadState(){
+  try{
+    const raw = localStorage.getItem(lsKey());
+    if(raw) state = Object.assign(state, JSON.parse(raw));
+    if(TURMA && TURMA.participantesPadrao && (!state.people || state.people.length!==3)) state.people = TURMA.participantesPadrao;
+  }catch(e){ console.warn('load fail', e); }
+}
+function saveState(){ localStorage.setItem(lsKey(), JSON.stringify(state)); }
+
+/* ===================== TABS ===================== */
+function showTab(name){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+  document.querySelectorAll('nav.bottom button').forEach(b=>b.classList.toggle('active', b.dataset.tab===name));
+  window.scrollTo(0,0);
+  if(name==='rota') setTimeout(()=>{ if(gpxMapInstance) gpxMapInstance.invalidateSize(); },50);
+}
+
+/* ===================== RENDER: HOME ===================== */
+function renderHome(){
+  document.getElementById('aventuraTitulo').textContent = AVENTURA.nome;
+  document.getElementById('aventuraSubtitulo').textContent = AVENTURA.subtitulo;
+  const kmDone = AVENTURA.dias.filter(d=>state.daysDone[d.n]).reduce((s,d)=>s+d.km,0);
+  const pct = Math.round((kmDone/AVENTURA.totalKm)*100);
+  document.getElementById('homeProgressBar').style.width = pct+'%';
+  document.getElementById('homeProgressLabel').textContent = kmDone+' km rodados de '+AVENTURA.totalKm+' km';
+  document.getElementById('statKmDone').textContent = kmDone;
+  document.getElementById('statKmLeft').textContent = AVENTURA.totalKm - kmDone;
+
+  let label = 'Pré-viagem';
+  let todayHtml = '<p class="muted">Aventura pronta pra começar.</p>';
+  if(TURMA && TURMA.dataInicio){
+    const start = new Date(TURMA.dataInicio+'T00:00:00');
+    const today = new Date(); today.setHours(0,0,0,0);
+    const diff = Math.floor((today-start)/(1000*60*60*24));
+    if(diff < 0){
+      label = 'Faltam '+Math.abs(diff)+' dia(s) para a largada';
+      const d0 = AVENTURA.dias[0];
+      todayHtml = '<p><b>'+d0.from+' → '+d0.to+'</b></p><p class="muted">Saída '+d0.saida+' · '+d0.km+' km · chegada estimada '+d0.chegada+'</p>';
+    } else if(diff < AVENTURA.totalDias){
+      const d = AVENTURA.dias[diff];
+      label = 'Dia '+d.n+' em andamento';
+      todayHtml = '<p><b>'+d.from+' → '+d.to+'</b></p><p class="muted">Saída '+d.saida+' · '+d.km+' km · '+d.elev+'m de ganho · chegada estimada '+d.chegada+'</p><button class="btn sm" style="margin-top:8px;" onclick="showTab(\'cronograma\')">Ver detalhes do dia</button>';
+    } else {
+      label = 'Jornada concluída 🎉';
+      todayHtml = '<p>Parabéns pela chegada! Hora de gravar o balanço final para o conteúdo de pós-viagem.</p>';
+    }
+  }
+  document.getElementById('statusPill').textContent = label;
+  document.getElementById('todayContent').innerHTML = todayHtml;
+}
+
+/* ===================== RENDER: ROTA / MAPA (GPX nativo, sem Wikiloc/Komoot/Strava) ===================== */
+let gpxMapInstance = null;
+let gpxLayer = null;
+let currentDayIdx = 0;
+
+function renderRota(){
+  document.getElementById('rotaFonte').textContent = AVENTURA.fonteRota;
+  const picker = document.getElementById('dayPicker');
+  picker.innerHTML = AVENTURA.dias.map((d,i)=>'<button class="'+(i===currentDayIdx?'active':'')+'" onclick="selecionarDia('+i+')">Dia '+d.n+'</button>').join('');
+  if(!gpxMapInstance){
+    gpxMapInstance = L.map('gpxMap').setView([-23.2,-45.7], 9);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution:'&copy; OpenStreetMap contributors', maxZoom: 18
+    }).addTo(gpxMapInstance);
+  }
+  carregarGpxDoDia(currentDayIdx);
+}
+function selecionarDia(i){
+  currentDayIdx = i;
+  document.querySelectorAll('#dayPicker button').forEach((b,idx)=>b.classList.toggle('active', idx===i));
+  carregarGpxDoDia(i);
+}
+function carregarGpxDoDia(i){
+  const d = AVENTURA.dias[i];
+  document.getElementById('gpxStats').innerHTML =
+    '<div class="kv"><b>'+d.km+' km</b><span>Distância</span></div>'+
+    '<div class="kv"><b>'+d.elev+' m</b><span>Ganho elev.</span></div>'+
+    '<div class="kv"><b>'+d.tempo.split('(')[0].trim()+'</b><span>Tempo</span></div>';
+  document.getElementById('rotaLinks').innerHTML =
+    '<a class="btn ghost sm" href="'+d.link+'" target="_blank" rel="noopener">🌐 Wikiloc</a>'+
+    '<a class="btn ghost sm" target="_blank" rel="noopener" href="https://www.strava.com/routes/new">🔺 Abrir no Strava</a>'+
+    '<a class="btn ghost sm" target="_blank" rel="noopener" href="https://www.komoot.com/">🥾 Abrir no Komoot</a>'+
+    '<a class="btn ghost sm" target="_blank" rel="noopener" href="https://www.google.com/maps">📍 Google Maps</a>';
+  if(gpxLayer){ gpxMapInstance.removeLayer(gpxLayer); gpxLayer=null; }
+  if(typeof L.GPX !== 'function'){
+    document.getElementById('gpxMap').innerHTML = '<p class="muted" style="padding:12px;">Não foi possível carregar o visualizador de mapa (sem internet ou biblioteca bloqueada). Use os links acima para abrir a rota em outro app.</p>';
+    return;
+  }
+  gpxLayer = new L.GPX(d.gpxFile, {
+    async: true,
+    marker_options: { startIconUrl:null, endIconUrl:null, shadowUrl:null },
+    polyline_options: { color: '#39FF14', weight: 4, opacity: 0.9 }
+  }).on('loaded', function(e){
+    gpxMapInstance.fitBounds(e.target.getBounds());
+  }).on('error', function(){
+    document.getElementById('gpxMap').insertAdjacentHTML('beforeend', '<p class="muted" style="padding:8px;">Não foi possível carregar o arquivo GPX deste dia agora.</p>');
+  }).addTo(gpxMapInstance);
+}
+
+/* ===================== RENDER: CRONOGRAMA ===================== */
+function renderDays(){
+  const c = document.getElementById('daysContainer');
+  c.innerHTML = AVENTURA.dias.map(d=>`
+    <details class="day-card" ${d.n===1?'open':''}>
+      <summary>
+        <div class="day-title-wrap">
+          <div class="day-num">${d.n}</div>
+          <div><h3 style="margin-bottom:2px;">${d.from} → ${d.to}</h3><small class="muted">${d.km} km · ${d.tempo.split('(')[0].trim()}</small></div>
+        </div>
+      </summary>
+      <div class="day-body">
+        <div class="grid2">
+          <div class="kv"><b>${d.saida}</b><span>Saída</span></div>
+          <div class="kv"><b>${d.chegada}</b><span>Chegada est.</span></div>
+          <div class="kv"><b>${d.km} km</b><span>Distância</span></div>
+          <div class="kv"><b>${d.elev} m</b><span>Ganho elevação</span></div>
+        </div>
+        <p><b>Pontos de referência:</b> ${d.refs}</p>
+        ${d.elevNota ? `<p class="muted" style="font-size:11.5px;">ℹ️ ${d.elevNota}</p>` : ''}
+        ${d.alerta ? `<div class="alert-box">⚠️ <b>Alerta:</b> ${d.alerta}</div>` : ''}
+        <label style="display:flex;align-items:center;gap:8px;margin:10px 0;font-size:13px;">
+          <input type="checkbox" ${state.daysDone[d.n]?'checked':''} onchange="toggleDayDone(${d.n}, this.checked)">
+          Marcar Dia ${d.n} como concluído
+        </label>
+        <h3 style="margin-top:14px;">📍 Paradas &amp; spots para gravar</h3>
+        ${(d.paradas||[]).map(p=>`
+          <div class="parada">
+            <div class="parada-top"><span class="km-badge">${p.km}</span><b>${p.nome}</b>${p.tag?`<span class="tag-parada">${p.tag}</span>`:''}</div>
+            <p style="font-size:12.5px;">${p.desc}</p>
+            <p class="idea-line">🎬 ${p.ideia}</p>
+            <small class="muted">Fonte: ${p.fonte}</small>
+          </div>`).join('')}
+        <h3 style="margin-top:14px;">Sugestões de pernoite</h3>
+        ${d.pousadas.map(p=>`
+          <div class="pousada">
+            <div class="pousada-top"><b>${p.nome}</b>${p.rec?'<span class="tag-rec">Top</span>':''}</div>
+            <p style="font-size:12.5px;">${p.desc}</p>
+            ${p.tel?`<a class="btn sm" href="tel:${p.tel.replace(/\\D/g,'')}">📞 ${p.tel}</a>`:'<span class="muted">Telefone não confirmado</span>'}
+          </div>`).join('')}
+      </div>
+    </details>`).join('');
+}
+function toggleDayDone(n, checked){ state.daysDone[n]=checked; saveState(); renderHome(); }
+
+/* ===================== RENDER: CHECKLIST ===================== */
+function renderChecklist(){
+  const c = document.getElementById('checklistContainer');
+  let html=''; let total=0, done=0;
+  Object.entries(AVENTURA.checklist).forEach(([cat, items])=>{
+    html += `<div class="card"><h2>${cat}</h2>`;
+    items.forEach((item,i)=>{
+      const key = cat+'::'+i;
+      const checked = !!state.checklist[key];
+      total++; if(checked) done++;
+      html += `<div class="check-item ${checked?'done':''}">
+        <input type="checkbox" id="chk_${i}_${cat.length}" ${checked?'checked':''} onchange="toggleCheck('${key.replace(/'/g,"\\'")}', this.checked)">
+        <label>${item}</label></div>`;
+    });
+    html += `</div>`;
+  });
+  c.innerHTML = html;
+  const pct = total?Math.round((done/total)*100):0;
+  document.getElementById('checkProgressBar').style.width = pct+'%';
+  document.getElementById('checkProgressLabel').textContent = done+' de '+total+' itens conferidos';
+}
+function toggleCheck(key, checked){ state.checklist[key]=checked; saveState(); renderChecklist(); }
+function resetChecklist(){ if(!confirm('Zerar todos os itens marcados?'))return; state.checklist={}; saveState(); renderChecklist(); }
+
+/* ===================== RENDER: GASTOS ===================== */
+function renderGastosSetup(){ document.getElementById('expQuem').innerHTML = state.people.map(p=>`<option>${p}</option>`).join(''); }
+function addExpense(){
+  const desc = document.getElementById('expDesc').value.trim();
+  const valor = parseFloat(document.getElementById('expValor').value);
+  const cat = document.getElementById('expCat').value;
+  const quem = document.getElementById('expQuem').value;
+  const divide = document.getElementById('expDivide').value;
+  if(!desc||!valor||valor<=0){ alert('Preencha descrição e valor válido.'); return; }
+  state.expenses.push({id:Date.now(), desc, valor, cat, quem, divide});
+  saveState();
+  document.getElementById('expDesc').value=''; document.getElementById('expValor').value='';
+  renderGastos();
+}
+function delExpense(id){ state.expenses = state.expenses.filter(e=>e.id!==id); saveState(); renderGastos(); }
+function renderGastos(){
+  renderGastosSetup();
+  const tbody = document.getElementById('expenseTableBody');
+  tbody.innerHTML = state.expenses.map(e=>`
+    <tr><td>${e.desc}<br><small class="muted">${e.divide==='todos'?'dividido':'individual'}</small></td>
+    <td>${e.cat}</td><td>${e.quem}</td><td class="num">R$ ${e.valor.toFixed(2)}</td>
+    <td><button class="del-btn" onclick="delExpense(${e.id})">✕</button></td></tr>`).join('') ||
+    '<tr><td colspan="5" class="muted">Nenhum gasto lançado ainda.</td></tr>';
+  const total = state.expenses.reduce((s,e)=>s+e.valor,0);
+  document.getElementById('totalGasto').textContent = 'R$ '+total.toFixed(2);
+  document.getElementById('perPessoa').textContent = 'R$ '+(total/(state.people.length||1)).toFixed(2);
+
+  const balance = {}; state.people.forEach(p=>balance[p]=0);
+  state.expenses.forEach(e=>{
+    if(e.divide==='todos'){
+      const share = e.valor/state.people.length;
+      state.people.forEach(p=>{ balance[p]-=share; });
+      balance[e.quem]+=e.valor;
+    }
+  });
+  const owes=[];
+  const creditors = state.people.filter(p=>balance[p]>0.01).map(p=>({p,amt:balance[p]}));
+  const debtors = state.people.filter(p=>balance[p]<-0.01).map(p=>({p,amt:-balance[p]}));
+  let ci=0, di=0;
+  while(ci<creditors.length && di<debtors.length){
+    const pay = Math.min(creditors[ci].amt, debtors[di].amt);
+    owes.push(`<div class="balance-item"><span>${debtors[di].p} deve para ${creditors[ci].p}</span><b>R$ ${pay.toFixed(2)}</b></div>`);
+    creditors[ci].amt-=pay; debtors[di].amt-=pay;
+    if(creditors[ci].amt<0.01) ci++;
+    if(debtors[di].amt<0.01) di++;
+  }
+  document.getElementById('balanceContainer').innerHTML = owes.length?owes.join(''):'<p class="muted">Sem pendências de divisão no momento.</p>';
+}
+
+/* ===================== RENDER: CONTEÚDO ===================== */
+const BPMF_PROMPT_BASE = {
+  marcas:'Rapha, Canyon, Specialized, Pas Normal Studios',
+  paleta:'Preto Asfalto #050505 (fundo/overlay) · Verde Trilha Neon #39FF14 (CTA/linhas, nunca em texto) · Branco Cume #FFFFFF (tipografia)',
+  tipografia:'Monument Extended / Oswald / Montserrat Black Italic para headlines (sigla BPMF sempre em itálico), Inter ou Roboto para texto base',
+  visual:'Ultra realistic photography, cinematic outdoor lighting, real cycling scene as dominant visual — NOT a flat color card with floating text. Text composited on top of the photo as a design layer (gradient scrim / lower-third band). No stock photo appearance, no flat solid-color background with floating text, no generic slide-deck look.',
+  keywords:'Rapha/Canyon/Specialized campaign photography style, real road cycling scene, cinematic lighting, editorial advertising design, no flat text card, no slide deck look.'
+};
+function buildAIPrompt(formatoLine, scene, headline, sub){
+  return `Create a premium ${formatoLine}.
+Brand style inspired by ${BPMF_PROMPT_BASE.marcas}.
+Color palette (graphic overlay layer): ${BPMF_PROMPT_BASE.paleta}.
+Typography: ${BPMF_PROMPT_BASE.tipografia}.
+Visual style: ${BPMF_PROMPT_BASE.visual}
+SCENE
+Subject & action: ${scene.subject}
+Environment: ${scene.environment}
+Camera & framing: ${scene.camera}
+Lighting & mood: ${scene.light}
+Text overlay: Headline "${headline}"${sub?' / Text "'+sub+'"':''} — lower-third gradient scrim, legible on mobile
+Style keywords: ${BPMF_PROMPT_BASE.keywords}`;
+}
+let COPY_REGISTRY = {};
+function registerCopy(key,text){ COPY_REGISTRY[key]=text; }
+function copyByKey(key, btn){
+  const text = COPY_REGISTRY[key]; if(!text) return;
+  navigator.clipboard?.writeText(text).then(()=>{ if(btn){ const o=btn.textContent; btn.textContent='✓ Copiado!'; setTimeout(()=>btn.textContent=o,1500);} });
+}
+function renderStages(){
+  const c = document.getElementById('stagesContainer');
+  c.innerHTML = AVENTURA.conteudoSemana.map(s=>{
+    const reelSpeechRows = s.reel.speech.map(b=>`
+      <div class="speech-row"><div class="speech-t">${b.t}<span class="fase-tag">${b.fase}</span></div>
+      <div class="speech-txt">"${b.txt}"</div>
+      <div class="speech-meta"><b>Tom:</b> ${b.tom} · <b>Câmera:</b> ${b.camera}</div>
+      <div class="speech-meta"><b>Overlay:</b> "${b.overlay}"</div></div>`).join('');
+    const reelKey = s.id+'_reel_caption'; registerCopy(reelKey, s.reel.caption);
+    const carKey = s.id+'_car_caption'; registerCopy(carKey, s.carrossel.caption);
+    const slidesHtml = s.carrossel.slides.map(sl=>{
+      const prompt = buildAIPrompt('Instagram carousel slide, vertical format 1080x1350 (4:5)', sl.scene, sl.headline, sl.sub||'');
+      const pKey = s.id+'_slide'+sl.n; registerCopy(pKey, prompt);
+      return `<div class="slide-card"><div class="slide-head"><span class="slide-num">${sl.n}</span><b>${sl.funcao}</b></div>
+      <p style="font-size:12.5px;"><b>${sl.headline}</b>${sl.sub?`<br><span class="muted">${sl.sub}</span>`:''}</p>
+      <details><summary style="font-size:11.5px;color:var(--neon);cursor:pointer;">🤖 Ver AI Prompt</summary>
+      <pre class="ai-prompt-box">${prompt}</pre>
+      <button class="btn ghost sm" onclick="copyByKey('${pKey}', this)">📋 Copiar prompt</button></details></div>`;
+    }).join('');
+    return `<div class="card">
+      <span class="porta-tag">${s.porta}</span><h3>${s.stage}</h3>
+      <p class="muted" style="font-size:11.5px;">${AVENTURA.portaFrase[s.porta]}</p>
+      <details><summary style="cursor:pointer;color:var(--neon);font-size:13px;">🎥 Reel/TikTok/Shorts — "${s.reel.titulo}"</summary>
+        <div style="margin-top:8px;">
+          <h3 style="font-size:11.5px;">Speech word-for-word</h3>${reelSpeechRows}
+          <div class="gen-box">${s.reel.caption}</div>
+          <button class="btn ghost sm" style="margin-top:6px;" onclick="copyByKey('${reelKey}', this)">📋 Copiar caption</button>
+        </div></details>
+      <details style="margin-top:8px;"><summary style="cursor:pointer;color:var(--neon);font-size:13px;">🎠 Carrossel — "${s.carrossel.titulo}"</summary>
+        <div style="margin-top:8px;">${slidesHtml}
+          <div class="gen-box">${s.carrossel.caption}</div>
+          <button class="btn ghost sm" style="margin-top:6px;" onclick="copyByKey('${carKey}', this)">📋 Copiar caption</button>
+        </div></details>
+    </div>`;
+  }).join('');
+}
+
+/* ===================== RENDER: EMERGÊNCIA ===================== */
+function renderCities(){
+  document.getElementById('citiesContainer').innerHTML = AVENTURA.cidadesEmergencia.map(ci=>`
+    <div class="city-block"><b>${ci.cidade}</b><p style="font-size:13px;">${ci.tel}</p><small class="muted">Fonte: ${ci.fonte}</small></div>`).join('');
+}
+
+/* ===================== OFFLINE / PWA ===================== */
+function checkOfflineStatus(){
+  if('serviceWorker' in navigator){
+    navigator.serviceWorker.register('service-worker.js').catch(e=>console.warn('SW falhou', e));
+  }
+  const banner = document.getElementById('offlineBanner');
+  if(!navigator.onLine){
+    banner.textContent = '📴 Você está offline — usando o conteúdo baixado.';
+    banner.classList.add('show');
+  }
+}
+window.addEventListener('online', ()=>document.getElementById('offlineBanner')?.classList.remove('show'));
+window.addEventListener('offline', ()=>{ const b=document.getElementById('offlineBanner'); if(b){ b.textContent='📴 Você está offline — usando o conteúdo baixado.'; b.classList.add('show'); }});
+
+async function baixarAventura(){
+  const statusEl = document.getElementById('downloadStatus');
+  if(!('caches' in window)){ statusEl.textContent = 'Seu navegador não suporta cache offline.'; return; }
+  statusEl.textContent = 'Baixando…';
+  try{
+    const cache = await caches.open('bpmf-ca-v1');
+    const urls = [
+      'index.html','manifest.json','turmas.json', AVENTURA.id+'.json',
+      ...AVENTURA.dias.map(d=>d.gpxFile),
+      'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css',
+      'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js',
+      'https://cdn.jsdelivr.net/npm/leaflet-gpx@1.7.0/gpx.js'
+    ];
+    await cache.addAll(urls);
+    statusEl.textContent = '✅ Aventura baixada — funciona sem internet a partir de agora. (Obs.: os tiles do mapa interativo, fora da área já visualizada, ainda dependem de sinal — versão 2 vai resolver isso.)';
+  }catch(e){
+    statusEl.textContent = '⚠️ Não deu pra baixar tudo agora ('+e.message+'). Tente novamente com internet estável.';
+  }
+}
+
+/* ===================== INIT ===================== */
+function renderAll(){
+  renderHome(); renderRota(); renderDays(); renderChecklist(); renderGastos(); renderStages(); renderCities();
+}
+</script>
+</body>
+</html>

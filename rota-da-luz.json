@@ -1,0 +1,276 @@
+{
+  "id": "rota-da-luz",
+  "nome": "Rota da Luz",
+  "subtitulo": "Mogi das Cruzes → Aparecida · 3 dias · MTB/Gravel",
+  "totalKm": 212.57,
+  "totalDias": 3,
+  "datasFechadas": "04 a 07 de setembro de 2026 (Sexta a Segunda) — datas travadas por Alexandre em 25/08/2026",
+  "porta_base": "Curadoria",
+  "fonteRota": "Dados de distância/elevação/waypoints extraídos de 3 arquivos GPX oficiais fornecidos por Alexandre em 25/08/2026 (Wikiloc, autor Glau Ferreira — Dia 1 gravado em 08/06/2023, Dias 2 e 3 gravados em 13-14/10/2023) — substituem os arquivos usados na primeira versão do app. Dias 2 e 3 têm distância/elevação/waypoints praticamente idênticos aos arquivos anteriores (mesma trilha, mesmos 9.571 e 14.234 trackpoints). O Dia 1 é uma gravação diferente da usada antes — mesma rota no relato, mas com 7 waypoints reais marcados (o arquivo anterior não tinha nenhum) e ganho de elevação real maior. Ver elevNota em cada dia para a faixa de variação do ganho de elevação conforme filtro de ruído de GPS.",
+  "dias": [
+    {
+      "n": 1,
+      "data": "sexta-feira, 04/09/2026",
+      "from": "Mogi das Cruzes (Estação)",
+      "to": "Santa Branca",
+      "saida": "06:00",
+      "km": 50.20,
+      "elev": 846,
+      "tempo": "6h de pedal (arquivo GPX oficial registra 6h00min do 1º ao último ponto, incluindo paradas)",
+      "chegada": "~12h00–13h00",
+      "elevNota": "[Certeza — recalculado do GPX oficial em 25/08/2026] Ganho de elevação real varia 722–1.210 m conforme o filtro de ruído do GPS aplicado (testado em 1m/3m/5m) — 846 m é o valor com filtro de 3m, usado aqui como referência central (bem próximo do valor anterior de 834m — a rota em si não mudou de dificuldade). Distância recalculada do GPX oficial: 49,87km — ligeiramente abaixo dos 50,20km que Alexandre fechou como número oficial; mantemos 50,20km no planejamento por ser o número que ele travou, a diferença (~0,3km) é típica de metodologia de cálculo (soma ponto-a-ponto vs. app/ciclocomputador) e não muda nada na prática.",
+      "refs": "Parque Centenário (Mogi), Luís Carlos (Guararema), Mirante do Zecão, Estação Guararema, chegada em Santa Branca.",
+      "link": "https://www.wikiloc.com/wikiloc/view.do?id=150032878",
+      "gpxFile": "dia1-mogi-santabranca.gpx",
+      "alerta": "[Certeza] 04/09/2026 é SEXTA-FEIRA (dia útil, confirmado via calendario-365.com.br). A CPTM só libera embarque de bicicleta em dia útil das 10h às 16h ou após as 21h (regra oficial CPTM, Linha 11-Coral) — NÃO cobre uma largada de bike às 6h em Mogi via trem. Se o plano depende de chegar a Mogi de trem com as bikes, resolver ANTES da viagem: (a) ir de carro/van/app até Mogi (mais simples, preserva o horário de 6h), ou (b) embarcar de trem sem bike montada dentro de saco/case fechado — malas de bike dobrável são isentas da restrição se ensacadas em até 150x60x30cm — ou (c) aceitar embarcar só depois das 10h e empurrar a largada do Dia 1 pra depois disso (troca o dia mais tranquilo da rota pelo mais apertado). Isso NÃO afeta o retorno — 07/09/2026 é feriado (Independência do Brasil), com embarque de bike liberado o dia todo.",
+      "pousadas": [
+        {"nome": "@pedalamoscicloturismo (com o Pedro) — Recomendada", "desc": "[Certeza] Hospedagem real, testada por quem gravou esta rota em 2023: \"nos hospedamos... com o Pedro. Maravilhoso, recomendo.\"", "tel": "(12) 98162-6122", "rec": true},
+        {"nome": "Buscar 2ª opção em Santa Branca", "desc": "Não encontramos, nesta pesquisa, uma 2ª pousada testada por quem já fez a rota. Pesquisar 1 alternativa de backup em Santa Branca antes da viagem — não inventamos nome aqui para não passar informação falsa.", "tel": null, "rec": false}
+      ],
+      "paradas": [
+        {"km": "largada", "nome": "Parque Centenário (Mogi das Cruzes)", "tag": "Waypoint real do GPX", "desc": "Waypoint real marcado por quem gravou (737m de elevação) — parou especificamente aqui para fotos, logo após descer do trem em Mogi.", "ideia": "Abertura do Reel do Dia 1: grupo montando as bikes / primeira selfie da jornada com o parque ao fundo.", "fonte": "[Certeza — waypoint do GPX oficial, Wikiloc]"},
+        {"km": "meio do dia", "nome": "Luís Carlos (Guararema)", "tag": "Waypoint real do GPX", "desc": "Waypoint real (618m de elevação) na Vila de Luís Carlos, vila ferroviária de 1914–1920 com casario tombado e fachadas coloridas.", "ideia": "B-roll cinematográfico das bikes encostadas nas fachadas + travelling lento pela vila.", "fonte": "[Certeza — waypoint do GPX oficial] · guararema.sp.gov.br"},
+        {"km": "após Luís Carlos", "nome": "Mirante do Zecão", "tag": "NOVO — Waypoint real do GPX", "desc": "Waypoint real (722m de elevação) — mirante ao longo do trajeto, não estava mapeado na versão anterior do app (o GPX antigo do Dia 1 não tinha nenhum waypoint marcado).", "ideia": "Ótimo ponto pra drone/foto aérea — vale parar e registrar a vista antes de seguir.", "fonte": "[Certeza — waypoint do GPX oficial, adicionado em 25/08/2026]"},
+        {"km": "antes da chegada", "nome": "Estação Guararema", "tag": "NOVO — Waypoint real do GPX", "desc": "Waypoint real (582m de elevação) na estação de trem de Guararema — ponto de referência no trajeto, pode servir de apoio (banheiro, água, comércio local).", "ideia": "Story rápido citando a estação como marco de \"reta final\" antes de Santa Branca.", "fonte": "[Certeza — waypoint do GPX oficial, adicionado em 25/08/2026]"},
+        {"km": "chegada", "nome": "Santa Branca (pernoite)", "tag": null, "desc": "Chegada ao pernoite do Dia 1.", "ideia": "Fecha o Reel do Dia 1 com a chegada + depoimento rápido do grupo sobre o 1º dia.", "fonte": "[Certeza — relato original do GPX]"}
+      ]
+    },
+    {
+      "n": 2,
+      "data": "sábado, 05/09/2026",
+      "from": "Santa Branca",
+      "to": "Redenção da Serra",
+      "saida": "07:00",
+      "km": 65.16,
+      "elev": 1458,
+      "tempo": "8h a 9h30 — dia 100% em estrada de terra (grupo de referência registrou 9h13 no GPX, incluindo paradas)",
+      "chegada": "~16h–17h30",
+      "elevNota": "Ganho de elevação real varia 1.272–1.735 m conforme o filtro de ruído do GPS (1m/3m/5m) — 1.458 m é o valor com filtro de 3m. Este é o dia com MAIS subida de toda a rota.",
+      "refs": "Paraibuna (parada de almoço, não é pernoite) e chegada em Redenção da Serra.",
+      "link": "https://www.wikiloc.com/wikiloc/view.do?id=150181229",
+      "gpxFile": "dia2-santabranca-redencao.gpx",
+      "alerta": "Dia 100% em estrada de terra e com o maior volume de subida da Rota da Luz (confirmado pelo relato de quem gravou: \"dia de muitas subidas\"). Reserve energia, leve corrente/pastilha de reposição e hidratação extra.",
+      "pousadas": [
+        {"nome": "Pousada dos Pereiras — Recomendada", "desc": "[Certeza] Pernoite real testado por quem gravou a rota, com jantar no fogão a lenha.", "tel": "(12) 99721-8999", "rec": true},
+        {"nome": "Pousada da Marlene", "desc": "[Certeza] Alternativa também testada pelo mesmo grupo: \"muito boa também\", segundo o relato original.", "tel": null, "rec": false}
+      ],
+      "paradas": [
+        {"km": "saída", "nome": "Santa Branca → estrada de terra", "tag": "Atenção", "desc": "Saída para um dia 100% em estrada de terra — o trecho de maior desgaste físico da rota inteira, segundo quem gravou.", "ideia": "Reel de preparação para o dia mais duro: bikes sendo ajustadas, foco no olhar do grupo.", "fonte": "[Certeza — relato original do GPX]"},
+        {"km": "entrada de Paraibuna", "nome": "Restaurante Pádua", "tag": "Parada real", "desc": "Almoço real de quem gravou a rota, bem na entrada de Paraibuna — \"comida deliciosa\" segundo o relato.", "ideia": "Bastidor de mesa farta + bikes na porta, comentário sobre repor energia no meio do dia mais puxado.", "fonte": "[Certeza — relato original do GPX]"},
+        {"km": "Paraibuna", "nome": "Maçã Bikes — Fábio (apoio mecânico)", "tag": "Apoio técnico", "desc": "Ponto de apoio mecânico real, marcado como waypoint por quem gravou — útil para qualquer ajuste de última hora.", "ideia": "Story/status rápido citando o apoio como dica prática para outros cicloturistas que seguirem a rota.", "fonte": "[Certeza — waypoint original do GPX]"},
+        {"km": "chegada", "nome": "Redenção da Serra (pernoite)", "tag": "Top spot", "desc": "Pernoite real na Pousada dos Pereiras, com jantar no fogão a lenha.", "ideia": "Reel de encerramento do dia mais puxado: jantar no fogão a lenha, depoimento de cansaço/satisfação do grupo.", "fonte": "[Certeza — relato original do GPX]"}
+      ]
+    },
+    {
+      "n": 3,
+      "data": "domingo, 06/09/2026",
+      "from": "Redenção da Serra",
+      "to": "Aparecida",
+      "saida": "06:30",
+      "km": 97.21,
+      "elev": 1103,
+      "tempo": "9h a 10h — dia MAIS LONGO da rota (quase o dobro do que se pensava antes de ler o GPX real). Grupo de referência chegou por volta das 17h30 segundo o relato de quem gravou (o registro bruto do GPX só fecha às 19h45 — provavelmente ficou ligado após o check-in no hotel).",
+      "chegada": "~17h30 (relato) — reservar folga até ~19h",
+      "elevNota": "Ganho de elevação real varia 1.002–1.268 m conforme o filtro de ruído do GPS (1m/3m/5m) — 1.103 m é o valor com filtro de 3m.",
+      "refs": "Taubaté, Pindamonhangaba e Roseira, todos no MESMO dia — não há pernoite intermediário nesse trecho.",
+      "link": "https://www.wikiloc.com/wikiloc/view.do?id=150326749",
+      "gpxFile": "dia3-redencao-aparecida.gpx",
+      "alerta": "Este dia tem 97 km e passa por Taubaté + Pindamonhangaba + Roseira no mesmo trajeto, sem pernoite intermediário. É o dia mais longo em distância da rota inteira — considere sair mais cedo (06h30) e avaliar apoio de carro/van para o grupo caso o cansaço acumulado dos 2 dias anteriores pese.",
+      "pousadas": [
+        {"nome": "Hotel Santa Ceia — Recomendada", "desc": "[Certeza] Hospedagem real escolhida por quem gravou a rota para dormir em Aparecida antes de retornar no dia seguinte. A ~5 min a pé da Basílica.", "tel": "(12) 3105-4085", "rec": true},
+        {"nome": "Buscar 2ª opção em Aparecida", "desc": "Aparecida tem dezenas de hotéis — não inventamos um 2º nome aqui; pesquisar 1 alternativa de backup mais próxima da Basílica antes de fechar reserva.", "tel": null, "rec": false}
+      ],
+      "paradas": [
+        {"km": "saída", "nome": "Redenção da Serra → Subida do Batman", "tag": "Desafio confirmado", "desc": "A \"Subida do Batman\" é um nome REAL, usado por quem já pedalou esta rota. Fica logo na saída do Dia 3, no trecho misto terra/asfalto.", "ideia": "Reel de superação: câmera no capacete subindo, corte para o topo com respiração ofegante real. Maior potencial de engajamento do pacote inteiro.", "fonte": "[Certeza — relato original do GPX, nome usado por quem gravou a rota]"},
+        {"km": "waypoint \"Pico\"", "nome": "Ponto mais alto da rota (~962 m)", "tag": "Recorde da rota", "desc": "Marcado como \"Pico\" por quem gravou — coincide com a maior altitude registrada em todo o percurso de 3 dias (961,8 m).", "ideia": "Slide de carrossel: \"o ponto mais alto dos nossos 3 dias\", com gráfico simples de altimetria.", "fonte": "[Certeza — waypoint original do GPX + cálculo próprio a partir do arquivo]"},
+        {"km": "após Taubaté", "nome": "Restaurante Caipira (estrada de terra)", "tag": "Parada real", "desc": "Almoço real do grupo, em meio à trilha, depois de passar por Taubaté.", "ideia": "Bastidor de almoço no meio do dia mais longo — contraste entre trilha e comida caseira.", "fonte": "[Certeza — relato original do GPX]"},
+        {"km": "waypoint", "nome": "Apoio com café — Dona Cida", "tag": "Apoio local", "desc": "Ponto de apoio marcado por quem gravou — parada de café em casa de moradora local.", "ideia": "Story/status: \"o café da Dona Cida\" — conteúdo de comunidade/hospitalidade do interior.", "fonte": "[Certeza — waypoint original do GPX]"},
+        {"km": "waypoint", "nome": "Restaurante Delícias do Cafundó (comida mineira)", "tag": "Parada real", "desc": "Outro ponto de parada marcado no GPX original, mais adiante no trajeto.", "ideia": "Se o horário permitir, vale um 2º registro de comida — reforça o eixo \"comida boa faz parte da jornada\".", "fonte": "[Certeza — waypoint original do GPX]"},
+        {"km": "trajeto (Roseira)", "nome": "Mosteiro da Sagrada Face (Roseira)", "tag": "Sugestão — avaliar desvio", "desc": "Réplica de castelo medieval italiano. Roseira está confirmada na rota pelo relato original, mas o desvio exato até o Mosteiro NÃO é um waypoint do GPX — veio de pesquisa complementar.", "ideia": "Se o horário/cansaço permitir um desvio rápido: slide de alto impacto visual. Senão, pular — o dia já é o mais longo da rota.", "fonte": "[Provável — pesquisa web complementar, não confirmado no GPX original]"},
+        {"km": "chegada", "nome": "Aparecida — Hotel Santa Ceia", "tag": "Grand Finale", "desc": "Chegada real por volta das 17h30 segundo o relato de quem gravou, com pernoite no Hotel Santa Ceia antes de retornar no dia seguinte.", "ideia": "Sequência de chegada triunfal: cúpulas da Basílica no horizonte → abraço do grupo na praça → depoimento de fechamento da jornada.", "fonte": "[Certeza — relato original do GPX]"}
+      ]
+    }
+  ],
+  "checklist": {
+    "Para a Bicicleta (antes e durante)": [
+      "Revisão geral pré-viagem (cabos, pastilhas de freio, relação de marchas)",
+      "2x câmaras de ar reserva (compatíveis) ou kit remendo Tubeless completo",
+      "Espátulas e bomba de mão de alto volume",
+      "Canivete multi-tool com extrator de corrente",
+      "Powerlink compatível com sua corrente",
+      "Lubrificante de corrente (cera/óleo) + pano de limpeza",
+      "Lanternas dianteira e traseira com boa autonomia",
+      "2x caramanholas — mínimo 1,5L de hidratação na bike"
+    ],
+    "Vestuário e Proteção": [
+      "Capacete, óculos de ciclismo e luvas",
+      "2x bretões ou bermudas de ciclismo de alta densidade",
+      "2x camisas de ciclismo com proteção UV",
+      "Corta-vento leve ou capa de chuva compacta",
+      "Manguito e pernito (manhãs de setembro no Vale do Paraíba: mínima média histórica ~14°C, saída às 6h-7h ainda no frio)",
+      "Sapatilha ou tênis confortável para pedalar e caminhar",
+      "Protetor solar e protetor labial"
+    ],
+    "Logística e Emergência": [
+      "Dinheiro em espécie (mercearias rurais podem não ter cartão/Pix)",
+      "Documento de identificação + carteirinha do plano de saúde",
+      "Kit de primeiros socorros (analgésico, anti-inflamatório, curativos, anti-atrito)",
+      "Carregador de celular + powerbank de alta capacidade",
+      "Passaporte oficial da Rota da Luz (impresso ou digital)"
+    ]
+  },
+  "climaEsperado": {
+    "confianca": "[Provável] — não é previsão pontual (a 10 dias de distância a previsão numérica ainda não é confiável); é a média climatológica histórica de 30 anos para a região (Taubaté, referência mais próxima com série longa disponível), usada como guia de bagagem, não como garantia.",
+    "setembroMedia": "Mínima 14°C / Máxima 25°C / Precipitação média do mês 86mm (setembro é mês de transição — sai do pico seco de inverno de jun-ago e começa a chover mais que no inverno, mas ainda bem abaixo do verão)",
+    "fonte": "Climatempo — climatologia histórica de Taubaté-SP (https://www.climatempo.com.br/climatologia/566/taubate-sp)",
+    "recomendacao": "Manhãs de largada (6h-7h) na faixa dos 12-14°C — manguito/pernito valem a pena. Tarde deve esquentar para a faixa de 22-25°C. Chance de chuva isolada existe mas não é o padrão do mês — capa de chuva compacta é precaução, não expectativa. Reconferir previsão real (7-10 dias) entre 25/08 e 02/09/2026, quando a janela entra no alcance confiável de previsão."
+  },
+  "cidadesEmergencia": [
+    {"cidade": "Santa Branca (pernoite Dia 1)", "tel": "(12) 3972-0100 (Prefeitura) · 199 (Defesa Civil)", "fonte": "santabranca.sp.gov.br — telefone direto da Defesa Civil não encontrado nesta pesquisa; usar 199 (nacional) ou ligar na Prefeitura para direcionamento"},
+    {"cidade": "Redenção da Serra (pernoite Dia 2)", "tel": "(12) 3676-1282 / (12) 3676-1600 (Prefeitura) · 199 (Defesa Civil)", "fonte": "redencaodaserra.sp.gov.br — telefone direto da Defesa Civil não encontrado nesta pesquisa; usar 199 (nacional) ou ligar na Prefeitura para direcionamento"},
+    {"cidade": "Aparecida (chegada Dia 3)", "tel": "199 (Defesa Civil) · 190/192/193", "fonte": "Números nacionais — confirmar telefone local da Defesa Civil de Aparecida antes da viagem"}
+  ],
+  "portaFrase": {
+    "Curadoria": "O trabalho que ninguém vê antes do sábado: validar rota, ponto de encontro e pernoite.",
+    "Experiência": "O dia completo, hora a hora — do frio da largada ao abraço na chegada.",
+    "Segurança": "A operação por trás: equipamento revisado, hidratação, apoio e plano B sempre prontos.",
+    "Comunidade": "Gente real pedalando junto — a amizade que nasce no meio da subida."
+  },
+  "conteudoSemana": [
+    {
+      "id": "pre", "stage": "Pré-viagem (Aquecimento)", "porta": "Curadoria",
+      "reel": {
+        "titulo": "O que vai na mala de um cicloturista de Gravel/MTB",
+        "storytelling": {"antes": "Ciclista que já saiu de casa com bagagem errada e sofreu na estrada.", "transformacao": "Mostra exatamente o que entra na bike/alforje pros 3 dias, item por item, com o porquê de cada um.", "depois": "Espectador confiante pra montar a própria mala pra próxima cicloviagem."},
+        "speech": [
+          {"t": "00:00–00:03", "fase": "GANCHO", "txt": "3 dias. 212km. E cabe tudo isso numa bike bag.", "tom": "Direto, confiante", "camera": "Close no alforje sendo fechado", "overlay": "ROTA DA LUZ · 3 DIAS · 212KM"},
+          {"t": "00:03–00:15", "fase": "DESENVOLVIMENTO", "txt": "Câmara reserva, multi-tool, poncho de chuva, manguito pro frio de setembro no Vale do Paraíba — cada item tem um motivo.", "tom": "Didático, ritmo rápido (estilo ASMR)", "camera": "Top-down dos itens sendo organizados um a um", "overlay": "Lista dos itens aparecendo em texto conforme fala"},
+          {"t": "00:15–00:25", "fase": "DESENVOLVIMENTO", "txt": "Dinheiro em espécie, documento e carteirinha do plano de saúde — mercearia de estrada nem sempre tem maquininha.", "tom": "Alerta prático", "camera": "Close na carteira/documentos sobre a bike", "overlay": "🚫 Nem sempre tem Pix"},
+          {"t": "00:25–00:30", "fase": "CTA", "txt": "04 a 07 de setembro, 2 amigos, rumo a Mogi. Bora?", "tom": "Convite, energia sobe", "camera": "Plano aberto: bike pronta encostada na porta de casa", "overlay": "Bora Pedalar Meu Filho"}
+        ],
+        "gravacao": {"roupa": "Jersey BPMF preto/verde neon", "fundo": "Garagem ou varanda de casa, bikes e alforjes reais no chão", "iluminacao": "Natural difusa, sem estúdio", "ritmo": "Cortes secos a cada 2–3s nos blocos de item (estilo ASMR), mais lento no gancho e CTA", "legenda": "Sim — itens em destaque sincronizados com a fala"},
+        "caption": "3 dias. 212km de Mogi a Aparecida. O que não pode faltar na bagagem de quem vai de Gravel/MTB — testado por quem vai pedalar. Salva esse post antes da sua próxima cicloviagem.\n\n#RotaDaLuz #BPMF #BoraPedalarMeuFilho #Cicloturismo #GravelBike #MTB #ValeDoParaiba #Cicloviagem"
+      },
+      "carrossel": {
+        "titulo": "De SP a Aparecida de trem e bike: a logística infalível",
+        "storytelling": {"gancho": "Ninguém sabe que dá pra ir de trem com a bike até o início da rota.", "desenvolvimento": "Passo a passo real: embarque, largada, distância total.", "virada": "Mostra que cabe no fim de semana estendido de qualquer executivo.", "cta": "Convite pra encarar a jornada."},
+        "slides": [
+          {"n": 1, "funcao": "Capa/Gancho", "headline": "DE TREM ATÉ MOGI. DE BIKE ATÉ APARECIDA.", "sub": "A logística que ninguém te conta", "scene": {"subject": "Cyclist standing on a train platform at dawn, bike loaded with bikepacking bags beside him", "environment": "São Paulo suburban train station, early morning mist", "camera": "Wide establishing shot, slight low angle", "light": "Cold blue dawn light, cinematic mood"}},
+          {"n": 2, "funcao": "Passo 1", "headline": "PASSO 1 — EMBARQUE", "sub": "Linha 11-Coral: em dia útil, bike só embarca 10h-16h ou após 21h. Nosso grupo foi de carro até Mogi pra preservar a largada das 6h.", "scene": {"subject": "Cyclist boarding the last train car, holding gravel bike by the frame", "environment": "CPTM train interior, last car, other passengers blurred in background", "camera": "Medium shot, eye level, shallow depth of field", "light": "Fluorescent train light mixed with window daylight"}},
+          {"n": 3, "funcao": "Passo 2", "headline": "PASSO 2 — LARGADA", "sub": "Chegando em Mogi das Cruzes às 07h, a primeira pedalada já começa: 50km até Santa Branca.", "scene": {"subject": "Two cyclists riding out of a train station square, pedaling away from camera", "environment": "Mogi das Cruzes train station exterior, early morning street", "camera": "Low angle tracking shot from behind", "light": "Golden early morning light, long shadows"}},
+          {"n": 4, "funcao": "Passo 3", "headline": "PASSO 3 — A ROTA", "sub": "3 dias, 212km, de Mogi até a Basílica de Aparecida.", "scene": {"subject": "Small group of cyclists riding a winding countryside gravel road, seen from a distance", "environment": "Vale do Paraíba rolling hills, rural road", "camera": "Wide drone-style aerial shot, subjects small in frame", "light": "Midday sun, dramatic landscape shadows"}},
+          {"n": 5, "funcao": "CTA", "headline": "BORA?", "sub": "04 a 07 de setembro. 2 amigos. 1 rota.", "scene": {"subject": "Three cyclists standing together with bikes, facing away toward a mountain road ahead", "environment": "Trailhead viewpoint overlooking the route ahead", "camera": "Wide shot from behind the group, symmetrical framing", "light": "Golden hour, warm and inviting"}}
+        ],
+        "caption": "A Rota da Luz começa de trem. De Mogi das Cruzes a Aparecida são 212km em 3 dias — e a logística é mais simples do que parece. Guarda esse passo a passo.\n\n#RotaDaLuz #BPMF #Cicloturismo #GravelBike #CPTM #ValeDoParaiba"
+      }
+    },
+    {
+      "id": "dia1", "stage": "Dia 1 — Mogi a Santa Branca (50km)", "porta": "Experiência",
+      "reel": {
+        "titulo": "A largada",
+        "storytelling": {"antes": "Ciclista nunca saiu de SP capital de trem + bike, acha que dá trabalho.", "transformacao": "Mostra a largada real — do frio da estação ao calor da estrada de terra.", "depois": "Quer repetir e já pensa na próxima cicloviagem."},
+        "speech": [
+          {"t": "00:00–00:04", "fase": "GANCHO", "txt": "05h da manhã, e a única coisa entre a gente e Aparecida são 212km de bike.", "tom": "Sussurrado, friozinho na voz", "camera": "Plano baixo dos trilhos com as bikes encostadas", "overlay": "DIA 1 · MOGI → SANTA BRANCA · 50KM"},
+          {"t": "00:04–00:15", "fase": "DESENVOLVIMENTO", "txt": "Trem até Mogi, e às 07h a roda já gira. Primeira parada: o Parque Centenário, pra bater a primeira foto do dia.", "tom": "Animado, energia subindo", "camera": "Bike saindo do trem na plataforma + parada rápida no parque", "overlay": "07h00 — Largada"},
+          {"t": "00:15–00:30", "fase": "DESENVOLVIMENTO", "txt": "Guararema surge como se o tempo tivesse parado — vila de 1914, ninguém acredita que isso fica a 80km de SP.", "tom": "Encantado", "camera": "Travelling lento pela Vila de Luís Carlos, bikes lado a lado", "overlay": "Vila de Luís Carlos · 1914"},
+          {"t": "00:30–00:55", "fase": "CTA", "txt": "50km depois, Santa Branca nos recebe. Amanhã é o dia mais duro da rota — 100% terra.", "tom": "Satisfação cansada", "camera": "Chegada em Santa Branca, golden hour", "overlay": "Chegada ~13h"}
+        ],
+        "gravacao": {"roupa": "Jersey BPMF", "fundo": "Paisagens reais da rota — sem estúdio", "iluminacao": "Natural, muda ao longo do dia (frio da manhã → golden hour da chegada)", "ritmo": "Blocos de 10–15s, mais contemplativo que o Reel de pré-viagem", "legenda": "Sim"},
+        "caption": "50km e uma vila de 1914 no meio do caminho. Dia 1 da Rota da Luz: Mogi das Cruzes a Santa Branca.\n\n#RotaDaLuz #BPMF #Guararema #SantaBranca #GravelBike #Cicloturismo #ValeDoParaiba"
+      },
+      "carrossel": {
+        "titulo": "50km, 3 paradas, 1 dia inesquecível",
+        "storytelling": {"gancho": "O primeiro dia parece o mais fácil — e é o mais bonito.", "desenvolvimento": "As paradas reais no meio da rota.", "virada": "A chegada em Santa Branca.", "cta": "Segue pro Dia 2, o mais duro."},
+        "slides": [
+          {"n": 1, "funcao": "Capa", "headline": "DIA 1 — MOGI A SANTA BRANCA", "sub": "50km · ~834m de ganho · 3 paradas reais", "scene": {"subject": "Cyclist riding away on a rural dirt road at sunrise", "environment": "Countryside near Mogi das Cruzes, misty morning fields", "camera": "Wide shot, low angle, subject small in frame", "light": "Cold morning mist, golden light breaking through"}},
+          {"n": 2, "funcao": "Parada 1", "headline": "PARQUE CENTENÁRIO", "sub": "A primeira parada do dia, logo na largada em Mogi", "scene": {"subject": "Cyclists taking a photo break in a city park, bikes leaning nearby", "environment": "Parque Centenário, Mogi das Cruzes, early morning", "camera": "Medium shot, candid framing", "light": "Soft early morning light"}},
+          {"n": 3, "funcao": "Parada 2", "headline": "VILA DE LUÍS CARLOS", "sub": "Vila ferroviária de 1914, arquitetura europeia intacta", "scene": {"subject": "Two gravel bikes leaning against a colorful historic railway house facade", "environment": "Vila de Luís Carlos, Guararema — preserved railway village street", "camera": "Medium shot, eye level, centered composition", "light": "Soft midday light, warm colors of the facades"}},
+          {"n": 4, "funcao": "Chegada", "headline": "SANTA BRANCA", "sub": "50km depois, o pernoite do Dia 1", "scene": {"subject": "Group of three cyclists arriving at a small town square, bikes beside them", "environment": "Santa Branca town center, late afternoon light", "camera": "Wide shot from behind the group", "light": "Golden hour, warm orange sky"}},
+          {"n": 5, "funcao": "CTA", "headline": "AMANHÃ: O DIA MAIS DURO", "sub": "65km, ~1.458m de subida e 100% terra esperam a gente", "scene": {"subject": "Cyclists resting bikes against a wall at dusk, silhouettes visible", "environment": "Santa Branca town square at nightfall, lights turning on", "camera": "Silhouette wide shot against the sunset sky", "light": "Dusk, deep orange and purple sky"}}
+        ],
+        "caption": "Dia 1 fechado: 50km de Mogi a Santa Branca, passando pela Vila de Luís Carlos. Amanhã é 100% terra até Redenção da Serra.\n\n#RotaDaLuz #BPMF #SantaBranca #Cicloturismo #GravelBike"
+      }
+    },
+    {
+      "id": "dia2", "stage": "Dia 2 — Santa Branca a Redenção da Serra (65km)", "porta": "Segurança",
+      "reel": {
+        "titulo": "O dia mais duro da rota",
+        "storytelling": {"antes": "Dúvida real se aguenta ~1.458m de subida com peso de viagem na bike, 100% em terra.", "transformacao": "Mostra o esforço de verdade, com a operação de apoio por trás.", "depois": "Prova viva de que dá pra vencer com preparo — sem esconder a dificuldade."},
+        "speech": [
+          {"t": "00:00–00:05", "fase": "GANCHO", "txt": "Hoje não tem disfarce: dia 100% em estrada de terra, o maior volume de subida da rota inteira.", "tom": "Sério, respiração já pesada", "camera": "Close no rosto suado, câmera no peito", "overlay": "DIA 2 · 65KM · 100% TERRA"},
+          {"t": "00:05–00:25", "fase": "DESENVOLVIMENTO", "txt": "Parada em Paraibuna pro almoço no Restaurante Pádua — repor energia no meio do dia mais puxado.", "tom": "Reflexivo, depois animado", "camera": "Mesa farta, bikes na porta do restaurante", "overlay": "Restaurante Pádua · Paraibuna"},
+          {"t": "00:25–00:45", "fase": "DESENVOLVIMENTO", "txt": "Marcha mais leve, ritmo constante, hidratação a cada 15 minutos — é assim que se vence um dia inteiro de terra, não na força bruta.", "tom": "Tenso, depois de alívio", "camera": "GoPro no capacete subindo trechos de terra", "overlay": "⚠️ Dia mais puxado da Rota da Luz"},
+          {"t": "00:45–00:55", "fase": "CTA", "txt": "65km, quase 1.500m de subida, e o corpo aguentou. Amanhã é o dia mais longo — mas o mais emocionante.", "tom": "Orgulho cansado", "camera": "Chegada em Redenção da Serra, jantar no fogão a lenha", "overlay": "Chegada ~17h"}
+        ],
+        "gravacao": {"roupa": "Jersey BPMF, proteção UV", "fundo": "Estrada real de terra + casario de Redenção da Serra", "iluminacao": "Luz dura de meio-dia na subida, suave na chegada", "ritmo": "Mais lento e ofegante no trecho de esforço, recupera ritmo na chegada", "legenda": "Sim"},
+        "caption": "O dia mais duro da Rota da Luz: 65km 100% em terra até Redenção da Serra, quase 1.500m de subida, zero atalho.\n\n#RotaDaLuz #BPMF #RedençãoDaSerra #GravelBike #MTB #Cicloturismo #Superação"
+      },
+      "carrossel": {
+        "titulo": "O dia mais duro da Rota da Luz",
+        "storytelling": {"gancho": "Todo mundo avisa: o Dia 2 é o teste de verdade.", "desenvolvimento": "100% terra, parada real em Paraibuna, técnica pra vencer a subida.", "virada": "A chegada em Redenção da Serra.", "cta": "A recompensa: jantar no fogão a lenha."},
+        "slides": [
+          {"n": 1, "funcao": "Capa", "headline": "DIA 2 — O MAIS DURO", "sub": "65km · ~1.458m de ganho · 100% terra", "scene": {"subject": "Cyclist climbing a steep dirt road, standing on pedals, visible effort", "environment": "Rural dirt road climbing through hills near Paraibuna", "camera": "Low angle hero shot from the road, subject filling the frame", "light": "Harsh midday sun, dramatic shadows"}},
+          {"n": 2, "funcao": "Parada real", "headline": "RESTAURANTE PÁDUA", "sub": "Almoço real na entrada de Paraibuna", "scene": {"subject": "Bikes parked outside a simple roadside restaurant, cyclists eating at outdoor table", "environment": "Paraibuna town entrance, countryside restaurant", "camera": "Medium candid shot", "light": "Bright midday natural light"}},
+          {"n": 3, "funcao": "Técnica", "headline": "COMO VENCER O DIA MAIS DURO", "sub": "Marcha leve, ritmo constante, água a cada 15 minutos", "scene": {"subject": "Cyclist's hands shifting gears, close-up, water bottle visible in frame", "environment": "Steep dirt climb, blurred green landscape background", "camera": "Close-up, shallow depth of field on the handlebar", "light": "Bright natural daylight"}},
+          {"n": 4, "funcao": "Apoio", "headline": "MAÇÃ BIKES — FÁBIO", "sub": "O ponto de apoio mecânico da rota, em Paraibuna", "scene": {"subject": "Cyclist getting a quick bike adjustment from a local mechanic", "environment": "Small bike repair stand in Paraibuna", "camera": "Medium shot, documentary style", "light": "Natural daylight, warm tone"}},
+          {"n": 5, "funcao": "CTA", "headline": "65KM DEPOIS", "sub": "Redenção da Serra nos recebe. Amanhã é o dia mais longo.", "scene": {"subject": "Three tired cyclists sitting outside a pousada with bikes, smiling, wood-fire dinner visible", "environment": "Pousada entrance at dusk, city lights starting to turn on", "camera": "Medium wide shot, relaxed candid framing", "light": "Blue hour, warm pousada lights contrasting"}}
+        ],
+        "caption": "65km 100% em terra, quase 1.500m de subida. Se sobreviveu ao Dia 2, o resto da Rota da Luz é conquista garantida.\n\n#RotaDaLuz #BPMF #Pindamonhangaba #GravelBike #MTB #Superação"
+      }
+    },
+    {
+      "id": "dia3", "stage": "Dia 3 — Redenção da Serra a Aparecida (97km)", "porta": "Comunidade",
+      "reel": {
+        "titulo": "A chegada",
+        "storytelling": {"antes": "Cansaço acumulado de 2 dias de estrada nas pernas, e pela frente o dia mais longo da rota.", "transformacao": "A Subida do Batman, os apoios reais no caminho, e a emoção crescente vendo a Basílica no horizonte.", "depois": "Alívio, orgulho e abraço em grupo — a jornada completa."},
+        "speech": [
+          {"t": "00:00–00:05", "fase": "GANCHO", "txt": "97km. O dia mais longo da rota é também o mais emocionante.", "tom": "Determinado, ansioso", "camera": "Plano do grupo se preparando em Redenção da Serra, saída ainda escura", "overlay": "DIA 3 · 97KM · CHEGADA"},
+          {"t": "00:05–00:20", "fase": "DESENVOLVIMENTO", "txt": "Logo na saída, a Subida do Batman — nome real, batizado por quem já pedalou esse trecho antes da gente.", "tom": "Tenso, depois de alívio no topo", "camera": "GoPro no capacete subindo + drone revelando o topo", "overlay": "⚠️ Subida do Batman"},
+          {"t": "00:20–00:35", "fase": "DESENVOLVIMENTO", "txt": "Café da Dona Cida, almoço no Restaurante Caipira depois de Taubaté — a rota inteira é pontuada de apoio local de verdade.", "tom": "Caloroso", "camera": "Bastidor de comida e conversa com moradores", "overlay": "Apoio local · Estrada de terra"},
+          {"t": "00:35–00:55", "fase": "CTA", "txt": "E então, no horizonte, as cúpulas da Basílica aparecem. 3 dias e 212km resumidos num segundo.", "tom": "Emocionado, celebração genuína", "camera": "Aproximação da Basílica + abraço do grupo na praça", "overlay": "Chegada ~17h30 · Bora Pedalar Meu Filho"}
+        ],
+        "gravacao": {"roupa": "Jersey BPMF (mesma dos outros dias, para continuidade visual)", "fundo": "Rota real até a Basílica de Aparecida", "iluminacao": "Manhã escura na largada, sol alto ao longo do dia, golden hour na chegada", "ritmo": "Acelera a emoção conforme se aproxima da Basílica", "legenda": "Sim"},
+        "caption": "212km depois: Basílica de Aparecida no horizonte e o abraço que fecha a Rota da Luz. Mais que um pedal, uma jornada.\n\n#RotaDaLuz #BPMF #BoraPedalarMeuFilho #Aparecida #GravelBike #Cicloturismo #ChegueiAqui"
+      },
+      "carrossel": {
+        "titulo": "212km depois",
+        "storytelling": {"gancho": "O último dia é o mais longo — e o mais carregado de emoção.", "desenvolvimento": "A Subida do Batman e os apoios locais reais no caminho.", "virada": "A Basílica surgindo no horizonte.", "cta": "O Grand Finale e o convite pra próxima jornada BPMF."},
+        "slides": [
+          {"n": 1, "funcao": "Capa", "headline": "DIA 3 — A CHEGADA", "sub": "97km · o dia mais longo, o mais emocionante", "scene": {"subject": "Three cyclists riding side by side on a mixed dirt and paved road at dawn", "environment": "Rural road leaving Redenção da Serra, early morning light", "camera": "Wide tracking shot from the side, group centered", "light": "Soft dawn light, calm atmosphere"}},
+          {"n": 2, "funcao": "Desafio", "headline": "SUBIDA DO BATMAN", "sub": "Nome real, confirmado por quem já pedalou esse trecho", "scene": {"subject": "Solo cyclist at the top of a steep climb, arms raised in triumph", "environment": "Summit viewpoint, mountains and valley visible below", "camera": "Wide aerial drone shot revealing the landscape below", "light": "Golden hour, epic adventure atmosphere"}},
+          {"n": 3, "funcao": "Apoio local", "headline": "O CAFÉ DA DONA CIDA", "sub": "Hospitalidade real do interior, no meio do trajeto", "scene": {"subject": "Cyclists sitting at a simple rural table with coffee, local host serving", "environment": "Small rural home along the route", "camera": "Medium candid shot, warm documentary style", "light": "Soft natural light, warm tones"}},
+          {"n": 4, "funcao": "Virada", "headline": "NO HORIZONTE...", "sub": "As cúpulas da Basílica aparecem depois de 3 dias de estrada", "scene": {"subject": "Cyclist riding toward camera with the Basilica domes visible far in the background", "environment": "Approach road to Aparecida, valley view opening up", "camera": "Low angle, basilica silhouette in soft focus background", "light": "Late afternoon light, sense of arrival"}},
+          {"n": 5, "funcao": "CTA", "headline": "ISSO É BPMF", "sub": "Mais que um pedal. Uma experiência completa.", "scene": {"subject": "Group hug of three cyclists in front of the Basilica, bikes resting beside them", "environment": "Basilica square, Aparecida, crowd softly blurred in background", "camera": "Medium shot, warm candid framing", "light": "Golden hour sky, celebratory mood"}}
+        ],
+        "caption": "212km, 3 dias e uma Subida do Batman que ninguém esquece. A Rota da Luz termina aqui — mas a próxima jornada BPMF já está sendo desenhada.\n\n#RotaDaLuz #BPMF #Aparecida #GravelBike #Cicloturismo #GrandFinale"
+      }
+    },
+    {
+      "id": "pos", "stage": "Pós-viagem (Registro & Comunidade)", "porta": "Comunidade",
+      "reel": {
+        "titulo": "Valeu a pena de Gravel/MTB?",
+        "storytelling": {"antes": "Quem assiste não sabe se topa encarar algo assim.", "transformacao": "Balanço honesto: o que doeu, o que valeu, o que surpreendeu — com a voz dos 2 amigos também.", "depois": "Espectador convencido a entrar na lista de espera da próxima jornada BPMF."},
+        "speech": [
+          {"t": "00:00–00:05", "fase": "GANCHO", "txt": "212km depois, a pergunta que todo mundo manda: valeu a pena?", "tom": "Reflexivo, sorridente", "camera": "Selfie/tripé, os 3 sentados, bikes ao fundo", "overlay": "BALANÇO · ROTA DA LUZ"},
+          {"t": "00:05–00:25", "fase": "DESENVOLVIMENTO", "txt": "[Depoimento real dos 2 amigos] o que mais surpreendeu, o que mais doeu, a parada que ninguém esperava.", "tom": "Espontâneo, conversa real", "camera": "Plano dos 3 alternando fala, sem roteiro engessado", "overlay": "Nomes na tela conforme cada um fala"},
+          {"t": "00:25–00:45", "fase": "DESENVOLVIMENTO", "txt": "Recorte dos melhores momentos: Vila de Luís Carlos, Subida do Batman, café da Dona Cida, chegada na Basílica.", "tom": "Nostálgico, ritmo acelera", "camera": "Montagem rápida dos clipes dos 3 dias", "overlay": "Recap 3 dias · 212km"},
+          {"t": "00:45–00:55", "fase": "CTA", "txt": "Isso é BPMF. Se você também quer viver — não só pedalar — a próxima jornada tem vaga limitada.", "tom": "Convite direto", "camera": "Plano fechado, logo BPMF", "overlay": "Lista de espera na bio"}
+        ],
+        "gravacao": {"roupa": "À vontade, fora do jersey (mostra o \"depois\")", "fundo": "Casa ou local de descanso, bikes ao fundo já limpas", "iluminacao": "Natural, ambiente aconchegante", "ritmo": "Conversa fluida intercalada com recap acelerado", "legenda": "Sim"},
+        "caption": "212km de Mogi a Aparecida. Valeu cada subida. Isso é BPMF — mais que um pedal, uma jornada. Lista de espera da próxima aberta na bio.\n\n#RotaDaLuz #BPMF #BoraPedalarMeuFilho #Cicloturismo #GravelBike #Comunidade"
+      },
+      "carrossel": {
+        "titulo": "5 aprendizados de 212km de Gravel/MTB",
+        "storytelling": {"gancho": "Todo mundo que topa uma cicloviagem quer saber isso antes.", "desenvolvimento": "5 aprendizados práticos e honestos.", "virada": "O aprendizado mais inesperado (apoio local/comunidade).", "cta": "Convite pra próxima jornada BPMF."},
+        "slides": [
+          {"n": 1, "funcao": "Capa", "headline": "5 APRENDIZADOS DE 212KM", "sub": "O que a Rota da Luz ensina que nenhum treino ensina", "scene": {"subject": "Cyclist looking back at the road just traveled, contemplative pause", "environment": "Viewpoint overlooking the valley route just completed", "camera": "Medium shot from behind, wide landscape visible", "light": "Late afternoon warm light, reflective mood"}},
+          {"n": 2, "funcao": "Aprendizado 1", "headline": "HIDRATAÇÃO NÃO É OPCIONAL", "sub": "1.5L mínimo na bike, reabastecer em toda parada", "scene": {"subject": "Cyclist drinking from a water bottle mid-ride, close-up", "environment": "Dirt road, dry midday landscape", "camera": "Close-up, shallow depth of field", "light": "Harsh bright midday sun"}},
+          {"n": 3, "funcao": "Aprendizado 2", "headline": "MARCHA LEVE VENCE FORÇA BRUTA", "sub": "Ritmo constante sobe mais longe que arrancada", "scene": {"subject": "Cyclist's hand on the gear shifter, close-up during a climb", "environment": "Steep gravel road, green mountains blurred behind", "camera": "Extreme close-up, shallow depth of field", "light": "Natural daylight, focused framing"}},
+          {"n": 4, "funcao": "Aprendizado 3", "headline": "O MELHOR APOIO NUNCA ESTÁ NO MAPA", "sub": "O café da Dona Cida não estava em nenhum roteiro", "scene": {"subject": "Cyclist chatting warmly with a local host along the route", "environment": "Rural roadside stop, simple home setting", "camera": "Medium shot, candid documentary framing", "light": "Warm natural light, sense of connection"}},
+          {"n": 5, "funcao": "CTA", "headline": "O MAIOR APRENDIZADO: NINGUÉM CHEGA SOZINHO", "sub": "Lista de espera da próxima jornada BPMF aberta", "scene": {"subject": "Group hug of three cyclists celebrating, bikes resting against each other", "environment": "Basilica square, warm crowd atmosphere blurred behind", "camera": "Medium shot, warm candid framing", "light": "Bright open sky, celebratory golden light"}}
+        ],
+        "caption": "O que 212km de Gravel/MTB ensinam que nenhum treino em casa ensina. Salva pra sua próxima cicloviagem — e se quiser viver isso com a gente, a lista de espera da próxima jornada BPMF está aberta.\n\n#RotaDaLuz #BPMF #Cicloturismo #GravelBike #MTB #ComunidadeBPMF"
+      }
+    }
+  ]
+}
