@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>BPMF CicloAventuras</title>
 <link rel="manifest" href="manifest.json">
-<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="icon" href="icon-512.png" type="image/png">
 <meta name="theme-color" content="#050505">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <style>
@@ -48,8 +48,8 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 /* PIN GATE */
 #pinGate{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;}
 #pinGate .card{max-width:360px;width:100%;text-align:center;animation:fadeUp .55s cubic-bezier(.22,.8,.36,1);}
-.emblem{width:110px;height:110px;border-radius:50%;border:3px solid var(--neon);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;box-shadow:0 0 0 1px rgba(57,255,20,.15),0 0 30px -4px rgba(57,255,20,.4);}
-.emblem span{font-style:italic;font-weight:900;font-size:26px;}
+.emblem{width:130px;height:130px;border-radius:50%;margin:0 auto 18px;box-shadow:0 0 30px -4px rgba(57,255,20,.45);overflow:hidden;}
+.emblem img{width:100%;height:100%;object-fit:contain;display:block;}
 #pinError{color:var(--danger);font-size:12.5px;min-height:16px;}
 
 /* NAV */
@@ -124,7 +124,7 @@ th,td{text-align:left;padding:8px 4px;border-bottom:1px solid #1a1d23;}
 <!-- ================= PIN GATE ================= -->
 <div id="pinGate">
   <div class="card">
-    <div class="emblem"><span class="italic-logo">BPMF</span></div>
+    <div class="emblem"><img src="logo-bpmf-oficial.png" alt="BPMF — Bora Pedalar Meu Filho"></div>
     <h1 style="text-align:center;">Cicло<span class="italic-logo">Aventuras</span></h1>
     <p class="muted">Digite o código de acesso da sua turma para entrar.</p>
     <label class="field">Código da turma</label>
@@ -299,8 +299,13 @@ function lsKey(){ return 'bpmf_ca_state_'+(TURMA?TURMA.id:'x'); }
 function loadState(){
   try{
     const raw = localStorage.getItem(lsKey());
-    if(raw) state = Object.assign(state, JSON.parse(raw));
-    if(TURMA && TURMA.participantesPadrao && (!state.people || state.people.length!==3)) state.people = TURMA.participantesPadrao;
+    if(raw){
+      state = Object.assign(state, JSON.parse(raw));
+    } else if(TURMA && TURMA.participantesPadrao){
+      // Primeira vez nesta turma: usa a lista de participantes da própria turma
+      // (funciona para qualquer número de pessoas, não só 3 — cada rota/turma define os seus)
+      state.people = TURMA.participantesPadrao;
+    }
   }catch(e){ console.warn('load fail', e); }
 }
 function saveState(){ localStorage.setItem(lsKey(), JSON.stringify(state)); }
@@ -648,9 +653,10 @@ async function baixarAventura(){
   if(!('caches' in window)){ statusEl.textContent = 'Seu navegador não suporta cache offline.'; return; }
   statusEl.textContent = 'Baixando…';
   try{
-    const cache = await caches.open('bpmf-ca-v1');
+    const cache = await caches.open('bpmf-ca-v2');
     const urls = [
       'index.html','manifest.json','turmas.json', AVENTURA.id+'.json',
+      'logo-bpmf-oficial.png','icon-192.png','icon-512.png',
       ...AVENTURA.dias.map(d=>d.gpxFile),
       'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css',
       'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js',

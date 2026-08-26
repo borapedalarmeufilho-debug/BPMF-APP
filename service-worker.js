@@ -4,8 +4,8 @@
    é quem faz o cache pesado (GPX, libs de mapa) sob demanda — este worker só garante
    que o app shell (HTML/JSON) funcione offline mesmo sem o usuário ter clicado em baixar. */
 
-const CACHE_NAME = 'bpmf-ca-v1';
-const APP_SHELL = ['index.html', 'manifest.json', 'turmas.json', 'icon.svg'];
+const CACHE_NAME = 'bpmf-ca-v2';
+const APP_SHELL = ['index.html', 'manifest.json', 'turmas.json', 'logo-bpmf-oficial.png', 'icon-192.png', 'icon-512.png'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
