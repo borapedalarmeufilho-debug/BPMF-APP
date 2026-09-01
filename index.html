@@ -462,7 +462,8 @@ function carregarGpxDoDia(i){
     document.getElementById('routeLegend').innerHTML = AVENTURA.dias.map((d,idx)=>
       '<span><span class="dot" style="background:'+ROUTE_COLORS[idx%ROUTE_COLORS.length]+';"></span>Dia '+d.n+' · '+d.from+' → '+d.to+'</span>').join('');
     document.getElementById('rotaLinks').innerHTML = AVENTURA.dias.map(d=>
-      '<a class="btn ghost sm" href="'+d.link+'" target="_blank" rel="noopener">🌐 Dia '+d.n+' Wikiloc</a>').join('');
+      '<a class="btn ghost sm" href="'+d.link+'" target="_blank" rel="noopener">🌐 Dia '+d.n+' Wikiloc</a>'+
+      '<a class="btn ghost sm" href="'+d.gpxFile+'" download="'+d.gpxFile+'">⬇️ GPX Dia '+d.n+'</a>').join('');
     const group = L.layerGroup().addTo(gpxMapInstance);
     let loaded = 0, allBounds = null;
     AVENTURA.dias.forEach((d,idx)=>{
@@ -496,6 +497,7 @@ function carregarGpxDoDia(i){
     '<div class="kv"><b>'+d.elev+' m</b><span>Ganho elev.</span></div>'+
     '<div class="kv"><b>'+d.tempo.split('(')[0].trim()+'</b><span>Tempo</span></div>';
   document.getElementById('rotaLinks').innerHTML =
+    '<a class="btn ghost sm" href="'+d.gpxFile+'" download="'+d.gpxFile+'">⬇️ Baixar GPX (Dia '+d.n+')</a>'+
     '<a class="btn ghost sm" href="'+d.link+'" target="_blank" rel="noopener">🌐 Wikiloc</a>'+
     '<a class="btn ghost sm" target="_blank" rel="noopener" href="https://www.strava.com/routes/new">🔺 Abrir no Strava</a>'+
     '<a class="btn ghost sm" target="_blank" rel="noopener" href="https://www.komoot.com/">🥾 Abrir no Komoot</a>'+
