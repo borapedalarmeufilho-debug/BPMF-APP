@@ -7,6 +7,50 @@
   "datasFechadas": "04 a 07 de setembro de 2026 (Sexta a Segunda) — datas travadas por Alexandre em 25/08/2026",
   "porta_base": "Curadoria",
   "fonteRota": "Dados de distância/elevação/waypoints extraídos de 3 arquivos GPX oficiais fornecidos por Alexandre em 25/08/2026 (Wikiloc, autor Glau Ferreira — Dia 1 gravado em 08/06/2023, Dias 2 e 3 gravados em 13-14/10/2023) — substituem os arquivos usados na primeira versão do app. Dias 2 e 3 têm distância/elevação/waypoints praticamente idênticos aos arquivos anteriores (mesma trilha, mesmos 9.571 e 14.234 trackpoints). O Dia 1 é uma gravação diferente da usada antes — mesma rota no relato, mas com 7 waypoints reais marcados (o arquivo anterior não tinha nenhum) e ganho de elevação real maior. Ver elevNota em cada dia para a faixa de variação do ganho de elevação conforme filtro de ruído de GPS.",
+  "checklistViagem": {
+    "_confianca": "[Provável] Quantidades adaptadas de referências de nutrição esportiva e bikepacking pro perfil real dos 3 dias — ajustar ao paladar/consumo de cada um, testado antes em treino. Totais somam a faixa baixa e a faixa alta de cada dia.",
+    "alimentacao": {
+      "nota": "Consumível — compre e separe tudo isso ANTES de sair de São Paulo. Na estrada só há reposição real nas paradas já mapeadas no Cronograma (Restaurante Pádua, Caipira etc.), não há loja garantida todo dia.",
+      "itens": [
+        {"item": "Sachê de isotônico", "total": "9–10 sachês", "porDia": {"1": "2", "2": "3–4", "3": "4"}},
+        {"item": "Gel de carboidrato", "total": "7–9 unidades", "porDia": {"1": "1–2", "2": "3", "3": "3–4"}},
+        {"item": "Paçoquinha", "total": "8–9 unidades", "porDia": {"1": "2", "2": "3", "3": "3–4"}},
+        {"item": "Barrinha de cereal", "total": "4–5 unidades", "porDia": {"1": "1", "2": "1–2", "3": "2"}},
+        {"item": "Jujuba/bala de goma", "total": "2–3 pacotinhos pequenos", "porDia": {"1": "opcional", "2": "1 pacotinho", "3": "1 pacotinho"}},
+        {"item": "Salgadinho (castanha, biscoito de polvilho)", "total": "2 porções", "porDia": {"1": "—", "2": "1 porção", "3": "1 porção"}}
+      ]
+    },
+    "kitFixo": {
+      "nota": "Mesmo kit na bike os 3 dias — não é item que se repõe a cada manhã, é o que já vai na bolsa de quadro/alforje desde a largada em Mogi.",
+      "manutencao": [
+        "1 câmara de ar avulsa reserva",
+        "Bomba compacta ou CO2 + adaptador",
+        "2 espátulas (tire levers)",
+        "Multiferramenta com chave allen + extrator de corrente",
+        "1 elo rápido (power link) avulso",
+        "Fita isolante/silver tape",
+        "Mini frasco de lubrificante de corrente — reforçar a partir do Dia 2 (100% terra)",
+        "1–2 luvas descartáveis (reparo sem sujar a mão) — principalmente Dia 2 e 3"
+      ],
+      "apoio": [
+        "Power bank + cabo",
+        "Celular com a Aventura baixada (offline)",
+        "Luz dianteira/traseira — usar ligada mesmo de dia"
+      ]
+    },
+    "vestuario": {
+      "nota": "Quantidade total pra rotação nos 3 dias — não é uma peça nova a cada manhã.",
+      "itens": [
+        "2 bretéis/bermudas com forro",
+        "2 camisas de ciclismo com proteção UV",
+        "1 par de luvas de ciclismo",
+        "3 pares de meia",
+        "1 óculos de proteção",
+        "1 manguito + pernito (só nas largadas frias, ~12–14°C)",
+        "1 protetor solar (uso diário, reaplicar nas paradas)"
+      ]
+    }
+  },
   "dias": [
     {
       "n": 1,
@@ -42,14 +86,7 @@
         {"km": "após Luís Carlos", "nome": "Mirante do Zecão", "tag": "NOVO — Waypoint real do GPX", "desc": "Waypoint real (722m de elevação) — mirante ao longo do trajeto, não estava mapeado na versão anterior do app (o GPX antigo do Dia 1 não tinha nenhum waypoint marcado).", "ideia": "Ótimo ponto pra drone/foto aérea — vale parar e registrar a vista antes de seguir.", "fonte": "[Certeza — waypoint do GPX oficial, adicionado em 25/08/2026]"},
         {"km": "antes da chegada", "nome": "Estação Guararema", "tag": "NOVO — Waypoint real do GPX", "desc": "Waypoint real (582m de elevação) na estação de trem de Guararema — ponto de referência no trajeto, pode servir de apoio (banheiro, água, comércio local).", "ideia": "Story rápido citando a estação como marco de \"reta final\" antes de Santa Branca.", "fonte": "[Certeza — waypoint do GPX oficial, adicionado em 25/08/2026]"},
         {"km": "chegada", "nome": "Santa Branca (pernoite)", "tag": null, "desc": "Pernoite na Pousada Santa Julia (Marcos Cunha) — reserva confirmada por Alexandre em 26/08/2026.", "ideia": "Fecha o Reel do Dia 1 com a chegada + depoimento rápido do grupo sobre o 1º dia.", "fonte": "[Certeza — relato original do GPX]"}
-      ],
-      "itensDoDia": {
-        "_confianca": "[Provável] Quantidades adaptadas de referências de nutrição esportiva e bikepacking pra um dia de 50km/6h em ritmo de cicloturismo (não é ritmo de prova) — ajustar ao seu paladar/tolerância, testado antes em treino.",
-        "Alimentação": ["2 sachês de isotônico", "1–2 géis de carboidrato", "2 paçoquinhas", "1 barrinha de cereal", "Jujuba (opcional, 1 pacotinho pequeno)"],
-        "Manutenção": ["1 câmara de ar avulsa", "Bomba compacta ou CO2 + adaptador", "2 espátulas (tire levers)", "Multiferramenta com chave allen + extrator de corrente", "1 elo rápido (power link) avulso", "Fita isolante/silver tape"],
-        "Apoio": ["Power bank + cabo", "Celular com a Aventura baixada (offline)", "Luz dianteira/traseira ligada mesmo de dia"],
-        "Vestuário do dia": ["Bretele/bermuda com forro", "Camisa de ciclismo com proteção UV", "Luva de ciclismo", "2 pares de meia", "Óculos de proteção", "Manguito e pernito (só na largada, ~12–14°C)", "Protetor solar (reaplicar nas paradas)"]
-      }
+      ]
     },
     {
       "n": 2,
@@ -76,14 +113,7 @@
         {"km": "entrada de Paraibuna", "nome": "Restaurante Pádua", "tag": "Parada real", "desc": "Almoço real de quem gravou a rota, bem na entrada de Paraibuna — \"comida deliciosa\" segundo o relato.", "ideia": "Bastidor de mesa farta + bikes na porta, comentário sobre repor energia no meio do dia mais puxado.", "fonte": "[Certeza — relato original do GPX]"},
         {"km": "Paraibuna", "nome": "Maçã Bikes — Fábio (apoio mecânico)", "tag": "Apoio técnico", "desc": "Ponto de apoio mecânico real, marcado como waypoint por quem gravou — útil para qualquer ajuste de última hora.", "ideia": "Story/status rápido citando o apoio como dica prática para outros cicloturistas que seguirem a rota.", "fonte": "[Certeza — waypoint original do GPX]"},
         {"km": "chegada", "nome": "Redenção da Serra (pernoite)", "tag": "Top spot", "desc": "Pernoite na Pousada do Japonês — reserva confirmada por Alexandre em 26/08/2026.", "ideia": "Reel de encerramento do dia mais puxado: chegada na pousada, depoimento de cansaço/satisfação do grupo.", "fonte": "[Certeza — reserva confirmada por Alexandre]"}
-      ],
-      "itensDoDia": {
-        "_confianca": "[Provável] Dia mais puxado da rota (100% terra, maior subida) — quantidades de nutrição sobem em relação ao Dia 1, seguindo a lógica de mais carboidrato/hora em esforço maior.",
-        "Alimentação": ["3–4 sachês de isotônico", "3 géis de carboidrato", "3 paçoquinhas", "1–2 barrinhas de cereal", "1 porção de salgadinho salgado (castanha, biscoito de polvilho)", "Jujuba — reserva pra subida final"],
-        "Manutenção": ["1 câmara de ar avulsa", "Bomba compacta ou CO2 + adaptador", "2 espátulas (tire levers)", "Multiferramenta com chave allen + extrator de corrente", "1 elo rápido (power link) avulso", "Fita isolante/silver tape", "Mini frasco de lubrificante de corrente (dia 100% terra, corrente suja mais rápido)", "1 luva descartável (reparo sem sujar a mão)"],
-        "Apoio": ["Power bank + cabo", "Celular com a Aventura baixada (offline)", "Luz dianteira/traseira ligada mesmo de dia"],
-        "Vestuário do dia": ["Bretele/bermuda com forro", "Camisa de ciclismo com proteção UV", "Luva de ciclismo", "2 pares de meia", "Óculos de proteção (poeira — dia 100% terra)", "Protetor solar (reaplicar nas paradas)"]
-      }
+      ]
     },
     {
       "n": 3,
@@ -112,14 +142,7 @@
         {"km": "waypoint", "nome": "Restaurante Delícias do Cafundó (comida mineira)", "tag": "Parada real", "desc": "Outro ponto de parada marcado no GPX original, mais adiante no trajeto.", "ideia": "Se o horário permitir, vale um 2º registro de comida — reforça o eixo \"comida boa faz parte da jornada\".", "fonte": "[Certeza — waypoint original do GPX]"},
         {"km": "trajeto (Roseira)", "nome": "Mosteiro da Sagrada Face (Roseira)", "tag": "Sugestão — avaliar desvio", "desc": "Réplica de castelo medieval italiano. Roseira está confirmada na rota pelo relato original, mas o desvio exato até o Mosteiro NÃO é um waypoint do GPX — veio de pesquisa complementar.", "ideia": "Se o horário/cansaço permitir um desvio rápido: slide de alto impacto visual. Senão, pular — o dia já é o mais longo da rota.", "fonte": "[Provável — pesquisa web complementar, não confirmado no GPX original]"},
         {"km": "chegada", "nome": "Aparecida — Hotel Santa Ceia", "tag": "Grand Finale", "desc": "Chegada real por volta das 17h30 segundo o relato de quem gravou, com pernoite no Hotel Santa Ceia antes de retornar no dia seguinte.", "ideia": "Sequência de chegada triunfal: cúpulas da Basílica no horizonte → abraço do grupo na praça → depoimento de fechamento da jornada.", "fonte": "[Certeza — relato original do GPX]"}
-      ],
-      "itensDoDia": {
-        "_confianca": "[Provável] Dia mais longo da rota (maior distância e tempo) — nutrição próxima ao Dia 2, com mais reforço de protetor solar pela exposição mais longa.",
-        "Alimentação": ["4 sachês de isotônico", "3–4 géis de carboidrato", "3–4 paçoquinhas", "2 barrinhas de cereal", "1 porção de salgadinho salgado", "Jujuba"],
-        "Manutenção": ["1 câmara de ar avulsa", "Bomba compacta ou CO2 + adaptador", "2 espátulas (tire levers)", "Multiferramenta com chave allen + extrator de corrente", "1 elo rápido (power link) avulso", "Fita isolante/silver tape", "Mini frasco de lubrificante de corrente (trecho de terra na Subida do Batman)", "1 luva descartável (reparo sem sujar a mão)"],
-        "Apoio": ["Power bank + cabo", "Celular com a Aventura baixada (offline)", "Luz dianteira/traseira ligada mesmo de dia"],
-        "Vestuário do dia": ["Bretele/bermuda com forro", "Camisa de ciclismo com proteção UV", "Luva de ciclismo", "2 pares de meia", "Óculos de proteção", "Protetor solar (reaplicar a cada parada — dia mais longo de exposição)"]
-      }
+      ]
     }
   ],
   "checklist": {

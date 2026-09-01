@@ -537,42 +537,56 @@ function renderChecklist(){
     html += `</div>`;
   });
 
-  const diasComItens = AVENTURA.dias.filter(d=>d.itensDoDia);
-  if(diasComItens.length){
-    html += `<h3 style="margin:18px 0 8px;">🚴 O que levar em cada dia de pedal</h3>`;
-    diasComItens.forEach(d=>{
-      const itens = d.itensDoDia;
-      let dayTotal=0, dayDone=0;
-      const cats = Object.entries(itens).filter(([cat])=>cat!=='_confianca');
-      cats.forEach(([cat, items])=>{
-        items.forEach((item,i)=>{
-          const key = 'dia'+d.n+'::'+cat+'::'+i;
-          total++; dayTotal++;
-          if(state.checklist[key]){ done++; dayDone++; }
-        });
+  const cv = AVENTURA.checklistViagem;
+  if(cv){
+    html += `<h3 style="margin:18px 0 8px;">🚴 O que levar nos 3 dias de pedal (visão consolidada)</h3>`;
+
+    // Alimentação — total pra comprar/separar em SP, com detalhe por dia
+    if(cv.alimentacao){
+      html += `<div class="card"><h2>🍫 Alimentação — comprar/separar antes de sair de SP</h2>`;
+      if(cv.alimentacao.nota) html += `<p class="muted" style="font-size:11.5px;">ℹ️ ${cv.alimentacao.nota}</p>`;
+      cv.alimentacao.itens.forEach((it,i)=>{
+        const key = 'aliment::'+i;
+        const checked = !!state.checklist[key];
+        total++; if(checked) done++;
+        const porDia = it.porDia ? Object.entries(it.porDia).map(([n,q])=>'D'+n+': '+q).join(' · ') : '';
+        html += `<label class="check-item ${checked?'done':''}" style="align-items:flex-start;">
+          <input type="checkbox" ${checked?'checked':''} onchange="toggleCheck('${key}', this.checked)">
+          <span><b>${it.total}</b> — ${it.item}${porDia?`<br><small class="muted">${porDia}</small>`:''}</span></label>`;
       });
-      html += `<details class="day-card" ${d.n===1?'open':''}>
-        <summary>
-          <div class="day-title-wrap">
-            <div class="day-num">${d.n}</div>
-            <div><h3 style="margin-bottom:2px;">${d.from} → ${d.to}</h3><small class="muted">${dayDone} de ${dayTotal} itens conferidos</small></div>
-          </div>
-        </summary>
-        <div class="day-body">
-          ${itens._confianca ? `<p class="muted" style="font-size:11.5px;">ℹ️ ${itens._confianca}</p>` : ''}
-          ${cats.map(([cat, items])=>`
-            <h3 style="margin-top:12px;">${cat}</h3>
-            ${items.map((item,i)=>{
-              const key = 'dia'+d.n+'::'+cat+'::'+i;
-              const checked = !!state.checklist[key];
-              return `<label class="check-item ${checked?'done':''}">
-                <input type="checkbox" ${checked?'checked':''} onchange="toggleCheck('${key.replace(/'/g,"\\'")}', this.checked)">
-                <span>${item}</span></label>`;
-            }).join('')}
-          `).join('')}
-        </div>
-      </details>`;
-    });
+      html += `</div>`;
+    }
+
+    // Kit fixo — manutenção + apoio, uma lista só (não multiplica por dia)
+    if(cv.kitFixo){
+      html += `<div class="card"><h2>🔧 Kit fixo da bike (leva todo dia, mesmo kit)</h2>`;
+      if(cv.kitFixo.nota) html += `<p class="muted" style="font-size:11.5px;">ℹ️ ${cv.kitFixo.nota}</p>`;
+      const kitItems = [...(cv.kitFixo.manutencao||[]), ...(cv.kitFixo.apoio||[])];
+      kitItems.forEach((item,i)=>{
+        const key = 'kitfixo::'+i;
+        const checked = !!state.checklist[key];
+        total++; if(checked) done++;
+        html += `<label class="check-item ${checked?'done':''}">
+          <input type="checkbox" ${checked?'checked':''} onchange="toggleCheck('${key}', this.checked)">
+          <span>${item}</span></label>`;
+      });
+      html += `</div>`;
+    }
+
+    // Vestuário — total pra rotação nos 3 dias
+    if(cv.vestuario){
+      html += `<div class="card"><h2>👕 Vestuário (total pra rotação nos 3 dias)</h2>`;
+      if(cv.vestuario.nota) html += `<p class="muted" style="font-size:11.5px;">ℹ️ ${cv.vestuario.nota}</p>`;
+      cv.vestuario.itens.forEach((item,i)=>{
+        const key = 'vestuario::'+i;
+        const checked = !!state.checklist[key];
+        total++; if(checked) done++;
+        html += `<label class="check-item ${checked?'done':''}">
+          <input type="checkbox" ${checked?'checked':''} onchange="toggleCheck('${key}', this.checked)">
+          <span>${item}</span></label>`;
+      });
+      html += `</div>`;
+    }
   }
 
   c.innerHTML = html;
