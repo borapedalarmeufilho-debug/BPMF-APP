@@ -114,7 +114,7 @@
       "refs": "Parque Centenário (Mogi), Luís Carlos (Guararema), Mirante do Zecão, Estação Guararema, chegada em Santa Branca.",
       "link": "https://www.wikiloc.com/wikiloc/view.do?id=150032878",
       "gpxFile": "dia1-mogi-santabranca.gpx",
-      "alerta": "[Certeza] Logística resolvida por Alexandre em 26/08/2026: em vez de pegar o trem na sexta de manhã (que esbarraria na restrição da CPTM pra bike em dia útil), o grupo vai de trem na quinta-feira (03/09) à noite, depois das ~20h30, e pernoita em Mogi das Cruzes antes da largada — ver 'vespera' abaixo. ⚠️ [Provável] Minha pesquisa anterior (CPTM, Linha 11-Coral) indicava liberação de bike 'após as 21h', não 20h30 — margem de meia hora é curta. Vale confirmar direto com a CPTM ou chegar com folga pra não pegar a virada exata do horário. Isso não afeta o retorno — 07/09/2026 é feriado (Independência do Brasil), embarque de bike liberado o dia todo.",
+      "alerta": "[Certeza] Trem quinta-feira 03/09 à noite (após ~20h30) rumo a Mogi das Cruzes — confirme o horário exato de liberação de bike com a CPTM antes de sair de casa. Volta 07/09 é feriado, sem restrição de horário para embarque de bike.",
       "vespera": {
         "data": "quinta-feira, 03/09/2026",
         "trem": "[Certeza — confirmado por Alexandre] Embarque em SP depois das ~20h30, chegada em Mogi das Cruzes à noite.",
@@ -133,7 +133,8 @@
           "coords": {
             "lat": -23.38357060344463,
             "lng": -45.82984010828872
-          }
+          },
+          "mapsLink": "https://www.google.com/maps?q=-23.38357060344463,-45.82984010828872"
         },
         {
           "nome": "@pedalamoscicloturismo (com o Pedro)",
@@ -212,13 +213,6 @@
           "categoriaOriginal": "Prefeituras",
           "lat": -23.414145,
           "lon": -46.035271
-        },
-        {
-          "nome": "Prefeitura Municipal de Olímpia",
-          "tipo": "emergencia",
-          "categoriaOriginal": "Prefeituras",
-          "lat": -23.398982,
-          "lon": -45.886919
         },
         {
           "nome": "Prefeitura Municipal de Santa Branca",
@@ -304,6 +298,208 @@
           "lat": -23.503084,
           "lon": -46.156898
         }
+      ],
+      "waypointsRota": [
+        {
+          "nome": "Parque Centenário (Mogi das Cruzes)",
+          "tipo": "turismo",
+          "kmRota": 2.5,
+          "lat": -23.510507,
+          "lon": -46.171082,
+          "mapsLink": "https://www.google.com/maps?q=-23.510507,-46.171082",
+          "desc": "Waypoint real marcado por quem gravou (737m de elevação) — parou especificamente aqui para fotos, logo após descer do trem em Mogi.",
+          "fonte": "curado"
+        },
+        {
+          "nome": "Mitra Diocese de Mogi das Cruzes",
+          "tipo": "turismo",
+          "kmRota": 5.1,
+          "lat": -23.503111,
+          "lon": -46.15683,
+          "mapsLink": "https://www.google.com/maps?q=-23.503111,-46.15683",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Paróquia São Benedito",
+          "tipo": "turismo",
+          "kmRota": 5.1,
+          "lat": -23.503084,
+          "lon": -46.156898,
+          "mapsLink": "https://www.google.com/maps?q=-23.503084,-46.156898",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Bella Ipoema",
+          "tipo": "apoio",
+          "kmRota": 6.7,
+          "lat": -23.504718,
+          "lon": -46.1409946,
+          "mapsLink": "https://www.google.com/maps?q=-23.504718,-46.1409946",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Administração Regional de Sabaúna",
+          "tipo": "emergencia",
+          "kmRota": 13.7,
+          "lat": -23.480601,
+          "lon": -46.088372,
+          "mapsLink": "https://www.google.com/maps?q=-23.480601,-46.088372",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Restaurante e Pizzaria Sabaúna",
+          "tipo": "apoio",
+          "kmRota": 13.8,
+          "lat": -23.480206,
+          "lon": -46.087697,
+          "mapsLink": "https://www.google.com/maps?q=-23.480206,-46.087697",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Igreja Nossa Senhora Do Carmo",
+          "tipo": "turismo",
+          "kmRota": 13.9,
+          "lat": -23.479893,
+          "lon": -46.087138,
+          "mapsLink": "https://www.google.com/maps?q=-23.479893,-46.087138",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Paróquia Nossa Senhora do Carmo",
+          "tipo": "turismo",
+          "kmRota": 13.9,
+          "lat": -23.480449,
+          "lon": -46.086819,
+          "mapsLink": "https://www.google.com/maps?q=-23.480449,-46.086819",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Posto Medicamentos Sabauna",
+          "tipo": "emergencia",
+          "kmRota": 14.2,
+          "lat": -23.479497,
+          "lon": -46.084997,
+          "mapsLink": "https://www.google.com/maps?q=-23.479497,-46.084997",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Luís Carlos (Guararema)",
+          "tipo": "turismo",
+          "kmRota": 19.1,
+          "lat": -23.458986,
+          "lon": -46.058983,
+          "mapsLink": "https://www.google.com/maps?q=-23.458986,-46.058983",
+          "desc": "Waypoint real (618m de elevação) na Vila de Luís Carlos, vila ferroviária de 1914–1920 com casario tombado e fachadas coloridas.",
+          "fonte": "curado"
+        },
+        {
+          "nome": "Fumaça Doce",
+          "tipo": "apoio",
+          "kmRota": 19.3,
+          "lat": -23.458593,
+          "lon": -46.058517,
+          "mapsLink": "https://www.google.com/maps?q=-23.458593,-46.058517",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Mirante do Zecão",
+          "tipo": "turismo",
+          "kmRota": 25.3,
+          "lat": -23.442896,
+          "lon": -46.034526,
+          "mapsLink": "https://www.google.com/maps?q=-23.442896,-46.034526",
+          "desc": "Waypoint real (722m de elevação) — mirante ao longo do trajeto, não estava mapeado na versão anterior do app (o GPX antigo do Dia 1 não tinha nenhum waypoint marcado).",
+          "fonte": "curado"
+        },
+        {
+          "nome": "Santa Casa de Misericórdia de Guararema",
+          "tipo": "emergencia",
+          "kmRota": 29.0,
+          "lat": -23.414441,
+          "lon": -46.036449,
+          "mapsLink": "https://www.google.com/maps?q=-23.414441,-46.036449",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Estação Guararema",
+          "tipo": "apoio",
+          "kmRota": 29.2,
+          "lat": -23.414177,
+          "lon": -46.031604,
+          "mapsLink": "https://www.google.com/maps?q=-23.414177,-46.031604",
+          "desc": "Waypoint real (582m de elevação) na estação de trem de Guararema — ponto de referência no trajeto, pode servir de apoio (banheiro, água, comércio local).",
+          "fonte": "curado"
+        },
+        {
+          "nome": "Prefeitura Municipal de Guararema",
+          "tipo": "emergencia",
+          "kmRota": 29.8,
+          "lat": -23.414145,
+          "lon": -46.035271,
+          "mapsLink": "https://www.google.com/maps?q=-23.414145,-46.035271",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "PONTO TURÍSTICO: Cachoeira do Putim",
+          "tipo": "turismo",
+          "kmRota": 35.5,
+          "lat": -23.428382,
+          "lon": -45.977805,
+          "mapsLink": "https://www.google.com/maps?q=-23.428382,-45.977805",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "PONTO TURÍSTICO: Mercado Municipal",
+          "tipo": "turismo",
+          "kmRota": 49.7,
+          "lat": -23.3975,
+          "lon": -45.887372,
+          "mapsLink": "https://www.google.com/maps?q=-23.3975,-45.887372",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Carpe Padaria e Confeitaria",
+          "tipo": "apoio",
+          "kmRota": 49.8,
+          "lat": -23.401345,
+          "lon": -45.887381,
+          "mapsLink": "https://www.google.com/maps?q=-23.401345,-45.887381",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Centro de Saúde",
+          "tipo": "emergencia",
+          "kmRota": 49.9,
+          "lat": -23.397892,
+          "lon": -45.885907,
+          "mapsLink": "https://www.google.com/maps?q=-23.397892,-45.885907",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Prefeitura Municipal de Santa Branca",
+          "tipo": "emergencia",
+          "kmRota": 49.9,
+          "lat": -23.396763,
+          "lon": -45.886004,
+          "mapsLink": "https://www.google.com/maps?q=-23.396763,-45.886004",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        }
       ]
     },
     {
@@ -331,7 +527,8 @@
           "coords": {
             "lat": -23.26521381824886,
             "lng": -45.53710804312794
-          }
+          },
+          "mapsLink": "https://www.google.com/maps?q=-23.26521381824886,-45.53710804312794"
         },
         {
           "nome": "Pousada da Marlene",
@@ -444,6 +641,118 @@
           "lat": -23.397046,
           "lon": -45.884627
         }
+      ],
+      "waypointsRota": [
+        {
+          "nome": "Café com Flores",
+          "tipo": "apoio",
+          "kmRota": 0.0,
+          "lat": -23.397685,
+          "lon": -45.884002,
+          "mapsLink": "https://www.google.com/maps?q=-23.397685,-45.884002",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Choppi",
+          "tipo": "apoio",
+          "kmRota": 0.0,
+          "lat": -23.396855,
+          "lon": -45.884596,
+          "mapsLink": "https://www.google.com/maps?q=-23.396855,-45.884596",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Padaria Rainha",
+          "tipo": "apoio",
+          "kmRota": 0.0,
+          "lat": -23.396222,
+          "lon": -45.884568,
+          "mapsLink": "https://www.google.com/maps?q=-23.396222,-45.884568",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Scalla Padaria e Confeitaria",
+          "tipo": "apoio",
+          "kmRota": 0.0,
+          "lat": -23.397046,
+          "lon": -45.884627,
+          "mapsLink": "https://www.google.com/maps?q=-23.397046,-45.884627",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Mercearia Rancho Vermelho",
+          "tipo": "apoio",
+          "kmRota": 5.7,
+          "lat": -23.386079,
+          "lon": -45.841323,
+          "mapsLink": "https://www.google.com/maps?q=-23.386079,-45.841323",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Polícia Militar do Estado de São Paulo",
+          "tipo": "emergencia",
+          "kmRota": 37.9,
+          "lat": -23.388865,
+          "lon": -45.662616,
+          "mapsLink": "https://www.google.com/maps?q=-23.388865,-45.662616",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Delegacia Geral de Polícia",
+          "tipo": "emergencia",
+          "kmRota": 38.3,
+          "lat": -23.390544,
+          "lon": -45.659654,
+          "mapsLink": "https://www.google.com/maps?q=-23.390544,-45.659654",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Maçã Bikes — Fábio (apoio mecânico)",
+          "tipo": "apoio",
+          "kmRota": 38.4,
+          "lat": -23.39009,
+          "lon": -45.658857,
+          "mapsLink": "https://www.google.com/maps?q=-23.39009,-45.658857",
+          "desc": "Ponto de apoio mecânico real, marcado como waypoint por quem gravou — útil para qualquer ajuste de última hora.",
+          "fonte": "curado"
+        },
+        {
+          "nome": "Bar Do Mamao Hamburgueria",
+          "tipo": "apoio",
+          "kmRota": 40.0,
+          "lat": -23.383218,
+          "lon": -45.66199,
+          "mapsLink": "https://www.google.com/maps?q=-23.383218,-45.66199",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Posto Petrobras",
+          "tipo": "apoio",
+          "kmRota": 40.2,
+          "lat": -23.381286,
+          "lon": -45.662422,
+          "mapsLink": "https://www.google.com/maps?q=-23.381286,-45.662422",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Restaurante Pádua",
+          "tipo": "apoio",
+          "kmRota": null,
+          "lat": null,
+          "lon": null,
+          "mapsLink": null,
+          "desc": "Almoço real de quem gravou a rota, bem na entrada de Paraibuna — \"comida deliciosa\" segundo o relato.",
+          "fonte": "curado-sem-coord"
+        }
       ]
     },
     {
@@ -460,7 +769,7 @@
       "refs": "Taubaté, Pindamonhangaba e Roseira, todos no MESMO dia — não há pernoite intermediário nesse trecho.",
       "link": "https://www.wikiloc.com/wikiloc/view.do?id=150326749",
       "gpxFile": "dia3-redencao-aparecida.gpx",
-      "alerta": "Este dia tem 97 km e passa por Taubaté + Pindamonhangaba + Roseira no mesmo trajeto, sem pernoite intermediário. É o dia mais longo em distância da rota inteira — considere sair mais cedo (06h30) e avaliar apoio de carro/van para o grupo caso o cansaço acumulado dos 2 dias anteriores pese.",
+      "alerta": "Este dia tem 97 km e passa por Taubaté + Pindamonhangaba + Roseira no mesmo trajeto, sem pernoite intermediário. É o dia mais longo em distância da rota inteira — considere sair mais cedo (06h30) e avaliar apoio de carro/van para o grupo caso o cansaço acumulado dos 2 dias anteriores pese. Logo na largada, o trecho é conhecido entre quem já pedalou esta rota como \"Subida do Batman\" (misto terra/asfalto).",
       "pousadas": [
         {
           "nome": "Hotel Santa Ceia — Recomendada",
@@ -820,6 +1129,468 @@
           "categoriaOriginal": "Templos Religiosos",
           "lat": -22.849542,
           "lon": -45.243453
+        }
+      ],
+      "waypointsRota": [
+        {
+          "nome": "Pronto Socorro Municipal",
+          "tipo": "emergencia",
+          "kmRota": 4.2,
+          "lat": -23.278314,
+          "lon": -45.534866,
+          "mapsLink": "https://www.google.com/maps?q=-23.278314,-45.534866",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Apoio com café — Dona Cida",
+          "tipo": "apoio",
+          "kmRota": 18.3,
+          "lat": -23.185419,
+          "lon": -45.548392,
+          "mapsLink": "https://www.google.com/maps?q=-23.185419,-45.548392",
+          "desc": "Ponto de apoio marcado por quem gravou — parada de café em casa de moradora local.",
+          "fonte": "curado"
+        },
+        {
+          "nome": "Mercearia Senhor Dimas (km12)",
+          "tipo": "apoio",
+          "kmRota": 20.1,
+          "lat": -23.173288,
+          "lon": -45.545615,
+          "mapsLink": "https://www.google.com/maps?q=-23.173288,-45.545615",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Mercearia da Carmem - Simaias",
+          "tipo": "apoio",
+          "kmRota": 33.2,
+          "lat": -23.075579,
+          "lon": -45.554713,
+          "mapsLink": "https://www.google.com/maps?q=-23.075579,-45.554713",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Mercado Panorama",
+          "tipo": "apoio",
+          "kmRota": 35.9,
+          "lat": -23.060363,
+          "lon": -45.544503,
+          "mapsLink": "https://www.google.com/maps?q=-23.060363,-45.544503",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Lanchonete",
+          "tipo": "apoio",
+          "kmRota": 38.8,
+          "lat": -23.038927,
+          "lon": -45.549917,
+          "mapsLink": "https://www.google.com/maps?q=-23.038927,-45.549917",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Padaria Campos Elísios",
+          "tipo": "apoio",
+          "kmRota": 39.1,
+          "lat": -23.036599,
+          "lon": -45.551208,
+          "mapsLink": "https://www.google.com/maps?q=-23.036599,-45.551208",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Pastelaria da Te",
+          "tipo": "apoio",
+          "kmRota": 39.1,
+          "lat": -23.036213,
+          "lon": -45.551227,
+          "mapsLink": "https://www.google.com/maps?q=-23.036213,-45.551227",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Supermercado Imaculada",
+          "tipo": "apoio",
+          "kmRota": 39.2,
+          "lat": -23.035021,
+          "lon": -45.551551,
+          "mapsLink": "https://www.google.com/maps?q=-23.035021,-45.551551",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Farmácia Imaculada",
+          "tipo": "emergencia",
+          "kmRota": 39.3,
+          "lat": -23.034723,
+          "lon": -45.551781,
+          "mapsLink": "https://www.google.com/maps?q=-23.034723,-45.551781",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Paróquia São Pedro Apóstolo Capela São",
+          "tipo": "turismo",
+          "kmRota": 39.3,
+          "lat": -23.034879,
+          "lon": -45.551582,
+          "mapsLink": "https://www.google.com/maps?q=-23.034879,-45.551582",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "PONTO TURÍSTICO: Santuário e Praça Santa Terezinha",
+          "tipo": "turismo",
+          "kmRota": 39.4,
+          "lat": -23.031868,
+          "lon": -45.560053,
+          "mapsLink": "https://www.google.com/maps?q=-23.031868,-45.560053",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "PONTO TURÍSTICO: Mercado Municipal",
+          "tipo": "turismo",
+          "kmRota": 39.7,
+          "lat": -23.027472,
+          "lon": -45.553527,
+          "mapsLink": "https://www.google.com/maps?q=-23.027472,-45.553527",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Padaria Paraíso",
+          "tipo": "apoio",
+          "kmRota": 39.8,
+          "lat": -23.031926,
+          "lon": -45.548931,
+          "mapsLink": "https://www.google.com/maps?q=-23.031926,-45.548931",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Paróquia São Pedro Apóstolo",
+          "tipo": "turismo",
+          "kmRota": 40.5,
+          "lat": -23.033145,
+          "lon": -45.541685,
+          "mapsLink": "https://www.google.com/maps?q=-23.033145,-45.541685",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "PONTO TURÍSTICO: Museu Mazzaropi",
+          "tipo": "turismo",
+          "kmRota": 42.5,
+          "lat": -23.045272,
+          "lon": -45.528572,
+          "mapsLink": "https://www.google.com/maps?q=-23.045272,-45.528572",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Ponto mais alto da rota (~962 m)",
+          "tipo": "turismo",
+          "kmRota": 53.5,
+          "lat": -23.032071,
+          "lon": -45.472292,
+          "mapsLink": "https://www.google.com/maps?q=-23.032071,-45.472292",
+          "desc": "Marcado como \"Pico\" por quem gravou — coincide com a maior altitude registrada em todo o percurso de 3 dias (961,8 m).",
+          "fonte": "curado"
+        },
+        {
+          "nome": "Restaurante Delícias do Cafundó (comida mineira)",
+          "tipo": "apoio",
+          "kmRota": 59.4,
+          "lat": -22.992524,
+          "lon": -45.456653,
+          "mapsLink": "https://www.google.com/maps?q=-22.992524,-45.456653",
+          "desc": "Outro ponto de parada marcado no GPX original, mais adiante no trajeto.",
+          "fonte": "curado"
+        },
+        {
+          "nome": "Bica De agua Potavel",
+          "tipo": "turismo",
+          "kmRota": 63.7,
+          "lat": -22.959205,
+          "lon": -45.453903,
+          "mapsLink": "https://www.google.com/maps?q=-22.959205,-45.453903",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Padaria e Mercearia Bela Vista",
+          "tipo": "apoio",
+          "kmRota": 64.2,
+          "lat": -22.954303,
+          "lon": -45.457354,
+          "mapsLink": "https://www.google.com/maps?q=-22.954303,-45.457354",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Restaurante 2 Irmaos",
+          "tipo": "apoio",
+          "kmRota": 65.2,
+          "lat": -22.942086,
+          "lon": -45.46233,
+          "mapsLink": "https://www.google.com/maps?q=-22.942086,-45.46233",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Mitra Diocesana de Taubate",
+          "tipo": "turismo",
+          "kmRota": 65.2,
+          "lat": -22.945508,
+          "lon": -45.455081,
+          "mapsLink": "https://www.google.com/maps?q=-22.945508,-45.455081",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Congregação Cristã no Brasil",
+          "tipo": "turismo",
+          "kmRota": 67.6,
+          "lat": -22.93497,
+          "lon": -45.437874,
+          "mapsLink": "https://www.google.com/maps?q=-22.93497,-45.437874",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Prefeitura Municipal Pindamonhangaba",
+          "tipo": "emergencia",
+          "kmRota": 68.7,
+          "lat": -22.924041,
+          "lon": -45.437996,
+          "mapsLink": "https://www.google.com/maps?q=-22.924041,-45.437996",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Paróquia de Nossa Senhora do Bom Sucesso",
+          "tipo": "turismo",
+          "kmRota": 69.1,
+          "lat": -22.915552,
+          "lon": -45.441807,
+          "mapsLink": "https://www.google.com/maps?q=-22.915552,-45.441807",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Paróquia São Benedito",
+          "tipo": "turismo",
+          "kmRota": 75.6,
+          "lat": -22.890095,
+          "lon": -45.386256,
+          "mapsLink": "https://www.google.com/maps?q=-22.890095,-45.386256",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Igreja São Benedito",
+          "tipo": "turismo",
+          "kmRota": 76.4,
+          "lat": -22.89317,
+          "lon": -45.378479,
+          "mapsLink": "https://www.google.com/maps?q=-22.89317,-45.378479",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Lago Azul",
+          "tipo": "apoio",
+          "kmRota": 83.6,
+          "lat": -22.892134,
+          "lon": -45.319955,
+          "mapsLink": "https://www.google.com/maps?q=-22.892134,-45.319955",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Congregação das Franciscanas Ação Pastoral",
+          "tipo": "turismo",
+          "kmRota": 84.7,
+          "lat": -22.899956,
+          "lon": -45.309174,
+          "mapsLink": "https://www.google.com/maps?q=-22.899956,-45.309174",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "PONTO TURÍSTICO: Matriz Sant'ana",
+          "tipo": "turismo",
+          "kmRota": 85.1,
+          "lat": -22.898234,
+          "lon": -45.305533,
+          "mapsLink": "https://www.google.com/maps?q=-22.898234,-45.305533",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Hospital Roseira",
+          "tipo": "emergencia",
+          "kmRota": 85.5,
+          "lat": -22.899546,
+          "lon": -45.301518,
+          "mapsLink": "https://www.google.com/maps?q=-22.899546,-45.301518",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "PONTO TURÍSTICO: Faculdade de Roseira - FARO",
+          "tipo": "turismo",
+          "kmRota": 88.1,
+          "lat": -22.884487,
+          "lon": -45.278074,
+          "mapsLink": "https://www.google.com/maps?q=-22.884487,-45.278074",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Restaurante Frango Assado",
+          "tipo": "apoio",
+          "kmRota": 90.1,
+          "lat": -22.87447,
+          "lon": -45.265555,
+          "mapsLink": "https://www.google.com/maps?q=-22.87447,-45.265555",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Churrascaria do Porto",
+          "tipo": "apoio",
+          "kmRota": 92.2,
+          "lat": -22.860882,
+          "lon": -45.253966,
+          "mapsLink": "https://www.google.com/maps?q=-22.860882,-45.253966",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "PONTO TURÍSTICO: Mirante das Pedras",
+          "tipo": "turismo",
+          "kmRota": 92.7,
+          "lat": -22.857924,
+          "lon": -45.251042,
+          "mapsLink": "https://www.google.com/maps?q=-22.857924,-45.251042",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Polícia Militar do Estado de São Paulo",
+          "tipo": "emergencia",
+          "kmRota": 94.2,
+          "lat": -22.851894,
+          "lon": -45.240613,
+          "mapsLink": "https://www.google.com/maps?q=-22.851894,-45.240613",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Paróquia de Santo Afonso",
+          "tipo": "turismo",
+          "kmRota": 94.3,
+          "lat": -22.849542,
+          "lon": -45.243453,
+          "mapsLink": "https://www.google.com/maps?q=-22.849542,-45.243453",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Polícia Rodoviária",
+          "tipo": "emergencia",
+          "kmRota": 94.5,
+          "lat": -22.858161,
+          "lon": -45.233197,
+          "mapsLink": "https://www.google.com/maps?q=-22.858161,-45.233197",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Shopping do Romeiro",
+          "tipo": "apoio",
+          "kmRota": 94.5,
+          "lat": -22.853602,
+          "lon": -45.235318,
+          "mapsLink": "https://www.google.com/maps?q=-22.853602,-45.235318",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "PONTO TURÍSTICO: Igreja de São Benedito",
+          "tipo": "turismo",
+          "kmRota": 95.1,
+          "lat": -22.843391,
+          "lon": -45.230715,
+          "mapsLink": "https://www.google.com/maps?q=-22.843391,-45.230715",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Prefeitura Municipal de Aparecida",
+          "tipo": "emergencia",
+          "kmRota": 95.9,
+          "lat": -22.848958,
+          "lon": -45.228382,
+          "mapsLink": "https://www.google.com/maps?q=-22.848958,-45.228382",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "PONTO TURÍSTICO: Teleférico Aparecida",
+          "tipo": "turismo",
+          "kmRota": 96.0,
+          "lat": -22.851372,
+          "lon": -45.232718,
+          "mapsLink": "https://www.google.com/maps?q=-22.851372,-45.232718",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Phumbica Lanches",
+          "tipo": "apoio",
+          "kmRota": 96.2,
+          "lat": -22.853264,
+          "lon": -45.23203,
+          "mapsLink": "https://www.google.com/maps?q=-22.853264,-45.23203",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "PONTO TURÍSTICO: Santuário Nacional de Nossa Senhora Aparecida",
+          "tipo": "turismo",
+          "kmRota": 96.8,
+          "lat": -22.850521,
+          "lon": -45.233723,
+          "mapsLink": "https://www.google.com/maps?q=-22.850521,-45.233723",
+          "desc": "",
+          "fonte": "kml-terceiro"
+        },
+        {
+          "nome": "Restaurante Caipira (estrada de terra)",
+          "tipo": "apoio",
+          "kmRota": null,
+          "lat": null,
+          "lon": null,
+          "mapsLink": null,
+          "desc": "Almoço real do grupo, em meio à trilha, depois de passar por Taubaté.",
+          "fonte": "curado-sem-coord"
+        },
+        {
+          "nome": "Mosteiro da Sagrada Face (Roseira)",
+          "tipo": "turismo",
+          "kmRota": null,
+          "lat": null,
+          "lon": null,
+          "mapsLink": null,
+          "desc": "Réplica de castelo medieval italiano. Roseira está confirmada na rota pelo relato original, mas o desvio exato até o Mosteiro NÃO é um waypoint do GPX — veio de pesquisa complementar.",
+          "fonte": "curado-sem-coord"
         }
       ]
     }
