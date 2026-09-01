@@ -9,7 +9,11 @@
       "status": "ativa",
       "dataInicio": "2026-09-04",
       "dataFim": "2026-09-07",
-      "participantesPadrao": ["Alexandre", "Amigo 1", "Amigo 2"]
+      "participantesPadrao": [
+        "Alexandre",
+        "Paulo",
+        "Emerson"
+      ]
     }
   ]
 }
