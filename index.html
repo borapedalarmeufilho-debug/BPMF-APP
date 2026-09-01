@@ -177,6 +177,7 @@ th,td{text-align:left;padding:8px 4px;border-bottom:1px solid #1a1d23;}
         <div id="gpxMap"></div>
         <div class="gpx-stats" id="gpxStats"></div>
         <div class="route-legend" id="routeLegend"></div>
+        <div class="route-legend" id="pontosToggle"></div>
         <div class="linkrow" id="rotaLinks"></div>
       </div>
     </section>
@@ -381,6 +382,42 @@ function selecionarDia(i){
   });
   carregarGpxDoDia(i);
 }
+const PONTOS_STYLE = {
+  apoio: {emoji:'🔧', color:'#00D4FF', label:'Apoio'},
+  emergencia: {emoji:'🏥', color:'#FF4D4F', label:'Emergência'},
+  turismo: {emoji:'⛪', color:'#FFC93E', label:'Turismo'}
+};
+let pontosVisiveis = {apoio:true, emergencia:true, turismo:true};
+function pontoIcon(tipo){
+  const s = PONTOS_STYLE[tipo] || {emoji:'📍', color:'#9aa3af'};
+  return L.divIcon({
+    className:'',
+    html:'<div style="background:'+s.color+';color:#050505;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:11px;border:2px solid #050505;box-shadow:0 0 5px rgba(0,0,0,.6);">'+s.emoji+'</div>',
+    iconSize:[22,22], iconAnchor:[11,11]
+  });
+}
+function addPontosApoio(group, pontos){
+  (pontos||[]).forEach(p=>{
+    if(!pontosVisiveis[p.tipo]) return;
+    L.marker([p.lat, p.lon], {icon: pontoIcon(p.tipo)})
+      .bindPopup('<b>'+p.nome+'</b><br><span class="muted">'+(p.categoriaOriginal||'')+'</span>')
+      .addTo(group);
+  });
+}
+function renderPontosLegend(pontos){
+  const el = document.getElementById('pontosToggle');
+  if(!el) return;
+  if(!pontos || !pontos.length){ el.innerHTML=''; return; }
+  const present = [...new Set(pontos.map(p=>p.tipo))];
+  el.innerHTML = present.map(t=>{
+    const s = PONTOS_STYLE[t] || {color:'#9aa3af', label:t};
+    return '<span style="cursor:pointer;opacity:'+(pontosVisiveis[t]?'1':'.4')+';" onclick="togglePontoTipo(\''+t+'\')"><span class="dot" style="background:'+s.color+';"></span>'+s.label+'</span>';
+  }).join('');
+}
+function togglePontoTipo(t){
+  pontosVisiveis[t] = !pontosVisiveis[t];
+  carregarGpxDoDia(currentDayIdx);
+}
 function pousadaIcon(color){
   return L.divIcon({
     className:'',
@@ -433,7 +470,9 @@ function carregarGpxDoDia(i){
           .bindPopup('<b>🛏️ '+pRec.nome+'</b>'+(pRec.tel?'<br>'+pRec.tel:''))
           .addTo(group);
       }
+      addPontosApoio(group, d.pontosApoio);
     });
+    renderPontosLegend(AVENTURA.dias.flatMap(d=>d.pontosApoio||[]));
     gpxLayer = group;
     return;
   }
@@ -463,6 +502,8 @@ function carregarGpxDoDia(i){
       .bindPopup('<b>🛏️ '+pRecSolo.nome+'</b>'+(pRecSolo.tel?'<br>'+pRecSolo.tel:''))
       .addTo(soloGroup);
   }
+  addPontosApoio(soloGroup, d.pontosApoio);
+  renderPontosLegend(d.pontosApoio);
   gpxLayer = soloGroup;
 }
 
