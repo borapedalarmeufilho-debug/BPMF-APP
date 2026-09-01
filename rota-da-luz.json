@@ -22,18 +22,34 @@
       "refs": "Parque Centenário (Mogi), Luís Carlos (Guararema), Mirante do Zecão, Estação Guararema, chegada em Santa Branca.",
       "link": "https://www.wikiloc.com/wikiloc/view.do?id=150032878",
       "gpxFile": "dia1-mogi-santabranca.gpx",
-      "alerta": "[Certeza] 04/09/2026 é SEXTA-FEIRA (dia útil, confirmado via calendario-365.com.br). A CPTM só libera embarque de bicicleta em dia útil das 10h às 16h ou após as 21h (regra oficial CPTM, Linha 11-Coral) — NÃO cobre uma largada de bike às 6h em Mogi via trem. Se o plano depende de chegar a Mogi de trem com as bikes, resolver ANTES da viagem: (a) ir de carro/van/app até Mogi (mais simples, preserva o horário de 6h), ou (b) embarcar de trem sem bike montada dentro de saco/case fechado — malas de bike dobrável são isentas da restrição se ensacadas em até 150x60x30cm — ou (c) aceitar embarcar só depois das 10h e empurrar a largada do Dia 1 pra depois disso (troca o dia mais tranquilo da rota pelo mais apertado). Isso NÃO afeta o retorno — 07/09/2026 é feriado (Independência do Brasil), com embarque de bike liberado o dia todo.",
+      "alerta": "[Certeza] Logística resolvida por Alexandre em 26/08/2026: em vez de pegar o trem na sexta de manhã (que esbarraria na restrição da CPTM pra bike em dia útil), o grupo vai de trem na quinta-feira (03/09) à noite, depois das ~20h30, e pernoita em Mogi das Cruzes antes da largada — ver 'vespera' abaixo. ⚠️ [Provável] Minha pesquisa anterior (CPTM, Linha 11-Coral) indicava liberação de bike 'após as 21h', não 20h30 — margem de meia hora é curta. Vale confirmar direto com a CPTM ou chegar com folga pra não pegar a virada exata do horário. Isso não afeta o retorno — 07/09/2026 é feriado (Independência do Brasil), embarque de bike liberado o dia todo.",
+      "vespera": {
+        "data": "quinta-feira, 03/09/2026",
+        "trem": "[Certeza — confirmado por Alexandre] Embarque em SP depois das ~20h30, chegada em Mogi das Cruzes à noite.",
+        "pousada": {
+          "nome": "Pousada Tokyo Plaza",
+          "endereco": "Rua José Malozze, 560 — Mogi das Cruzes",
+          "tel": "(11) 94303-1000"
+        }
+      },
       "pousadas": [
-        {"nome": "@pedalamoscicloturismo (com o Pedro) — Recomendada", "desc": "[Certeza] Hospedagem real, testada por quem gravou esta rota em 2023: \"nos hospedamos... com o Pedro. Maravilhoso, recomendo.\"", "tel": "(12) 98162-6122", "rec": true},
-        {"nome": "Buscar 2ª opção em Santa Branca", "desc": "Não encontramos, nesta pesquisa, uma 2ª pousada testada por quem já fez a rota. Pesquisar 1 alternativa de backup em Santa Branca antes da viagem — não inventamos nome aqui para não passar informação falsa.", "tel": null, "rec": false}
+        {"nome": "Pousada Santa Julia (Marcos Cunha) — Recomendada", "desc": "[Certeza] Reserva confirmada por Alexandre em 26/08/2026.", "tel": "(12) 09221-9558", "rec": true, "coords": {"lat": -23.38357060344463, "lng": -45.82984010828872}},
+        {"nome": "@pedalamoscicloturismo (com o Pedro)", "desc": "[Certeza] Alternativa testada por quem gravou esta rota em 2023: \"nos hospedamos... com o Pedro. Maravilhoso, recomendo.\" — não é a hospedagem confirmada desta viagem.", "tel": "(12) 98162-6122", "rec": false}
       ],
       "paradas": [
         {"km": "largada", "nome": "Parque Centenário (Mogi das Cruzes)", "tag": "Waypoint real do GPX", "desc": "Waypoint real marcado por quem gravou (737m de elevação) — parou especificamente aqui para fotos, logo após descer do trem em Mogi.", "ideia": "Abertura do Reel do Dia 1: grupo montando as bikes / primeira selfie da jornada com o parque ao fundo.", "fonte": "[Certeza — waypoint do GPX oficial, Wikiloc]"},
         {"km": "meio do dia", "nome": "Luís Carlos (Guararema)", "tag": "Waypoint real do GPX", "desc": "Waypoint real (618m de elevação) na Vila de Luís Carlos, vila ferroviária de 1914–1920 com casario tombado e fachadas coloridas.", "ideia": "B-roll cinematográfico das bikes encostadas nas fachadas + travelling lento pela vila.", "fonte": "[Certeza — waypoint do GPX oficial] · guararema.sp.gov.br"},
         {"km": "após Luís Carlos", "nome": "Mirante do Zecão", "tag": "NOVO — Waypoint real do GPX", "desc": "Waypoint real (722m de elevação) — mirante ao longo do trajeto, não estava mapeado na versão anterior do app (o GPX antigo do Dia 1 não tinha nenhum waypoint marcado).", "ideia": "Ótimo ponto pra drone/foto aérea — vale parar e registrar a vista antes de seguir.", "fonte": "[Certeza — waypoint do GPX oficial, adicionado em 25/08/2026]"},
         {"km": "antes da chegada", "nome": "Estação Guararema", "tag": "NOVO — Waypoint real do GPX", "desc": "Waypoint real (582m de elevação) na estação de trem de Guararema — ponto de referência no trajeto, pode servir de apoio (banheiro, água, comércio local).", "ideia": "Story rápido citando a estação como marco de \"reta final\" antes de Santa Branca.", "fonte": "[Certeza — waypoint do GPX oficial, adicionado em 25/08/2026]"},
-        {"km": "chegada", "nome": "Santa Branca (pernoite)", "tag": null, "desc": "Chegada ao pernoite do Dia 1.", "ideia": "Fecha o Reel do Dia 1 com a chegada + depoimento rápido do grupo sobre o 1º dia.", "fonte": "[Certeza — relato original do GPX]"}
-      ]
+        {"km": "chegada", "nome": "Santa Branca (pernoite)", "tag": null, "desc": "Pernoite na Pousada Santa Julia (Marcos Cunha) — reserva confirmada por Alexandre em 26/08/2026.", "ideia": "Fecha o Reel do Dia 1 com a chegada + depoimento rápido do grupo sobre o 1º dia.", "fonte": "[Certeza — relato original do GPX]"}
+      ],
+      "itensDoDia": {
+        "_confianca": "[Provável] Quantidades adaptadas de referências de nutrição esportiva e bikepacking pra um dia de 50km/6h em ritmo de cicloturismo (não é ritmo de prova) — ajustar ao seu paladar/tolerância, testado antes em treino.",
+        "Alimentação": ["2 sachês de isotônico", "1–2 géis de carboidrato", "2 paçoquinhas", "1 barrinha de cereal", "Jujuba (opcional, 1 pacotinho pequeno)"],
+        "Manutenção": ["1 câmara de ar avulsa", "Bomba compacta ou CO2 + adaptador", "2 espátulas (tire levers)", "Multiferramenta com chave allen + extrator de corrente", "1 elo rápido (power link) avulso", "Fita isolante/silver tape"],
+        "Apoio": ["Power bank + cabo", "Celular com a Aventura baixada (offline)", "Luz dianteira/traseira ligada mesmo de dia"],
+        "Vestuário do dia": ["Bretele/bermuda com forro", "Camisa de ciclismo com proteção UV", "Luva de ciclismo", "2 pares de meia", "Óculos de proteção", "Manguito e pernito (só na largada, ~12–14°C)", "Protetor solar (reaplicar nas paradas)"]
+      }
     },
     {
       "n": 2,
@@ -51,15 +67,23 @@
       "gpxFile": "dia2-santabranca-redencao.gpx",
       "alerta": "Dia 100% em estrada de terra e com o maior volume de subida da Rota da Luz (confirmado pelo relato de quem gravou: \"dia de muitas subidas\"). Reserve energia, leve corrente/pastilha de reposição e hidratação extra.",
       "pousadas": [
-        {"nome": "Pousada da Marlene — Recomendada", "desc": "[Certeza] Reserva confirmada por Alexandre em 26/08/2026. Também testada pelo grupo que gravou a rota original: \"muito boa também\".", "tel": "(12) 99709-4837", "rec": true},
+        {"nome": "Pousada do Japonês — Recomendada", "desc": "[Certeza] Reserva confirmada por Alexandre em 26/08/2026 (vaga garantida).", "tel": "(11) 99143-8855", "telObs": "[Provável] DDD 11 é atípico pra Redenção da Serra (região é DDD 12) — pode ser linha de WhatsApp/celular registrada em outra cidade, não necessariamente erro. Vale confirmar se for discar direto.", "rec": true, "coords": {"lat": -23.26521381824886, "lng": -45.53710804312794}},
+        {"nome": "Pousada da Marlene", "desc": "[Certeza] Era a opção cotada antes de fechar vaga na Pousada do Japonês (atualizado 31/08/2026) — não é mais a reserva desta viagem, mantida aqui só como alternativa. Também testada pelo grupo que gravou a rota original: \"muito boa também\".", "tel": "(12) 99709-4837", "rec": false},
         {"nome": "Pousada dos Pereiras", "desc": "[Certeza] Alternativa testada por quem gravou a rota, com jantar no fogão a lenha — não é a hospedagem confirmada desta viagem.", "tel": "(12) 99721-8999", "rec": false}
       ],
       "paradas": [
         {"km": "saída", "nome": "Santa Branca → estrada de terra", "tag": "Atenção", "desc": "Saída para um dia 100% em estrada de terra — o trecho de maior desgaste físico da rota inteira, segundo quem gravou.", "ideia": "Reel de preparação para o dia mais duro: bikes sendo ajustadas, foco no olhar do grupo.", "fonte": "[Certeza — relato original do GPX]"},
         {"km": "entrada de Paraibuna", "nome": "Restaurante Pádua", "tag": "Parada real", "desc": "Almoço real de quem gravou a rota, bem na entrada de Paraibuna — \"comida deliciosa\" segundo o relato.", "ideia": "Bastidor de mesa farta + bikes na porta, comentário sobre repor energia no meio do dia mais puxado.", "fonte": "[Certeza — relato original do GPX]"},
         {"km": "Paraibuna", "nome": "Maçã Bikes — Fábio (apoio mecânico)", "tag": "Apoio técnico", "desc": "Ponto de apoio mecânico real, marcado como waypoint por quem gravou — útil para qualquer ajuste de última hora.", "ideia": "Story/status rápido citando o apoio como dica prática para outros cicloturistas que seguirem a rota.", "fonte": "[Certeza — waypoint original do GPX]"},
-        {"km": "chegada", "nome": "Redenção da Serra (pernoite)", "tag": "Top spot", "desc": "Pernoite na Pousada da Marlene — reserva confirmada por Alexandre em 26/08/2026 (tel. (12) 99709-4837).", "ideia": "Reel de encerramento do dia mais puxado: chegada na pousada, depoimento de cansaço/satisfação do grupo.", "fonte": "[Certeza — reserva confirmada por Alexandre]"}
-      ]
+        {"km": "chegada", "nome": "Redenção da Serra (pernoite)", "tag": "Top spot", "desc": "Pernoite na Pousada do Japonês — reserva confirmada por Alexandre em 26/08/2026.", "ideia": "Reel de encerramento do dia mais puxado: chegada na pousada, depoimento de cansaço/satisfação do grupo.", "fonte": "[Certeza — reserva confirmada por Alexandre]"}
+      ],
+      "itensDoDia": {
+        "_confianca": "[Provável] Dia mais puxado da rota (100% terra, maior subida) — quantidades de nutrição sobem em relação ao Dia 1, seguindo a lógica de mais carboidrato/hora em esforço maior.",
+        "Alimentação": ["3–4 sachês de isotônico", "3 géis de carboidrato", "3 paçoquinhas", "1–2 barrinhas de cereal", "1 porção de salgadinho salgado (castanha, biscoito de polvilho)", "Jujuba — reserva pra subida final"],
+        "Manutenção": ["1 câmara de ar avulsa", "Bomba compacta ou CO2 + adaptador", "2 espátulas (tire levers)", "Multiferramenta com chave allen + extrator de corrente", "1 elo rápido (power link) avulso", "Fita isolante/silver tape", "Mini frasco de lubrificante de corrente (dia 100% terra, corrente suja mais rápido)", "1 luva descartável (reparo sem sujar a mão)"],
+        "Apoio": ["Power bank + cabo", "Celular com a Aventura baixada (offline)", "Luz dianteira/traseira ligada mesmo de dia"],
+        "Vestuário do dia": ["Bretele/bermuda com forro", "Camisa de ciclismo com proteção UV", "Luva de ciclismo", "2 pares de meia", "Óculos de proteção (poeira — dia 100% terra)", "Protetor solar (reaplicar nas paradas)"]
+      }
     },
     {
       "n": 3,
@@ -88,7 +112,14 @@
         {"km": "waypoint", "nome": "Restaurante Delícias do Cafundó (comida mineira)", "tag": "Parada real", "desc": "Outro ponto de parada marcado no GPX original, mais adiante no trajeto.", "ideia": "Se o horário permitir, vale um 2º registro de comida — reforça o eixo \"comida boa faz parte da jornada\".", "fonte": "[Certeza — waypoint original do GPX]"},
         {"km": "trajeto (Roseira)", "nome": "Mosteiro da Sagrada Face (Roseira)", "tag": "Sugestão — avaliar desvio", "desc": "Réplica de castelo medieval italiano. Roseira está confirmada na rota pelo relato original, mas o desvio exato até o Mosteiro NÃO é um waypoint do GPX — veio de pesquisa complementar.", "ideia": "Se o horário/cansaço permitir um desvio rápido: slide de alto impacto visual. Senão, pular — o dia já é o mais longo da rota.", "fonte": "[Provável — pesquisa web complementar, não confirmado no GPX original]"},
         {"km": "chegada", "nome": "Aparecida — Hotel Santa Ceia", "tag": "Grand Finale", "desc": "Chegada real por volta das 17h30 segundo o relato de quem gravou, com pernoite no Hotel Santa Ceia antes de retornar no dia seguinte.", "ideia": "Sequência de chegada triunfal: cúpulas da Basílica no horizonte → abraço do grupo na praça → depoimento de fechamento da jornada.", "fonte": "[Certeza — relato original do GPX]"}
-      ]
+      ],
+      "itensDoDia": {
+        "_confianca": "[Provável] Dia mais longo da rota (maior distância e tempo) — nutrição próxima ao Dia 2, com mais reforço de protetor solar pela exposição mais longa.",
+        "Alimentação": ["4 sachês de isotônico", "3–4 géis de carboidrato", "3–4 paçoquinhas", "2 barrinhas de cereal", "1 porção de salgadinho salgado", "Jujuba"],
+        "Manutenção": ["1 câmara de ar avulsa", "Bomba compacta ou CO2 + adaptador", "2 espátulas (tire levers)", "Multiferramenta com chave allen + extrator de corrente", "1 elo rápido (power link) avulso", "Fita isolante/silver tape", "Mini frasco de lubrificante de corrente (trecho de terra na Subida do Batman)", "1 luva descartável (reparo sem sujar a mão)"],
+        "Apoio": ["Power bank + cabo", "Celular com a Aventura baixada (offline)", "Luz dianteira/traseira ligada mesmo de dia"],
+        "Vestuário do dia": ["Bretele/bermuda com forro", "Camisa de ciclismo com proteção UV", "Luva de ciclismo", "2 pares de meia", "Óculos de proteção", "Protetor solar (reaplicar a cada parada — dia mais longo de exposição)"]
+      }
     }
   ],
   "checklist": {
@@ -114,7 +145,7 @@
     "Logística e Emergência": [
       "Dinheiro em espécie (mercearias rurais podem não ter cartão/Pix)",
       "Documento de identificação + carteirinha do plano de saúde",
-      "Kit de primeiros socorros (analgésico, anti-inflamatório, curativos, anti-atrito)",
+      "Kit de primeiros socorros (analgésico, anti-inflamatório, curativos, vaselina/creme anti-assadura)",
       "Carregador de celular + powerbank de alta capacidade",
       "Passaporte oficial da Rota da Luz (impresso ou digital)"
     ]
@@ -126,6 +157,7 @@
     "recomendacao": "Manhãs de largada (6h-7h) na faixa dos 12-14°C — manguito/pernito valem a pena. Tarde deve esquentar para a faixa de 22-25°C. Chance de chuva isolada existe mas não é o padrão do mês — capa de chuva compacta é precaução, não expectativa. Reconferir previsão real (7-10 dias) entre 25/08 e 02/09/2026, quando a janela entra no alcance confiável de previsão."
   },
   "cidadesEmergencia": [
+    {"cidade": "Mogi das Cruzes (pernoite véspera, quinta 03/09)", "tel": "(11) 4798-6000 (Prefeitura) · (11) 4798-5089 (Defesa Civil admin.) · (11) 94703-4844 (Defesa Civil WhatsApp, 7h-19h) · 199 (Defesa Civil emergência)", "fonte": "mogidascruzes.sp.gov.br"},
     {"cidade": "Santa Branca (pernoite Dia 1)", "tel": "(12) 3972-0100 (Prefeitura) · 199 (Defesa Civil)", "fonte": "santabranca.sp.gov.br — telefone direto da Defesa Civil não encontrado nesta pesquisa; usar 199 (nacional) ou ligar na Prefeitura para direcionamento"},
     {"cidade": "Redenção da Serra (pernoite Dia 2)", "tel": "(12) 3676-1282 / (12) 3676-1600 (Prefeitura) · 199 (Defesa Civil)", "fonte": "redencaodaserra.sp.gov.br — telefone direto da Defesa Civil não encontrado nesta pesquisa; usar 199 (nacional) ou ligar na Prefeitura para direcionamento"},
     {"cidade": "Aparecida (chegada Dia 3)", "tel": "199 (Defesa Civil) · 190/192/193", "fonte": "Números nacionais — confirmar telefone local da Defesa Civil de Aparecida antes da viagem"}
@@ -200,7 +232,7 @@
           {"t": "00:00–00:05", "fase": "GANCHO", "txt": "Hoje não tem disfarce: dia 100% em estrada de terra, o maior volume de subida da rota inteira.", "tom": "Sério, respiração já pesada", "camera": "Close no rosto suado, câmera no peito", "overlay": "DIA 2 · 65KM · 100% TERRA"},
           {"t": "00:05–00:25", "fase": "DESENVOLVIMENTO", "txt": "Parada em Paraibuna pro almoço no Restaurante Pádua — repor energia no meio do dia mais puxado.", "tom": "Reflexivo, depois animado", "camera": "Mesa farta, bikes na porta do restaurante", "overlay": "Restaurante Pádua · Paraibuna"},
           {"t": "00:25–00:45", "fase": "DESENVOLVIMENTO", "txt": "Marcha mais leve, ritmo constante, hidratação a cada 15 minutos — é assim que se vence um dia inteiro de terra, não na força bruta.", "tom": "Tenso, depois de alívio", "camera": "GoPro no capacete subindo trechos de terra", "overlay": "⚠️ Dia mais puxado da Rota da Luz"},
-          {"t": "00:45–00:55", "fase": "CTA", "txt": "65km, quase 1.500m de subida, e o corpo aguentou. Amanhã é o dia mais longo — mas o mais emocionante.", "tom": "Orgulho cansado", "camera": "Chegada em Redenção da Serra, Pousada da Marlene", "overlay": "Chegada ~17h"}
+          {"t": "00:45–00:55", "fase": "CTA", "txt": "65km, quase 1.500m de subida, e o corpo aguentou. Amanhã é o dia mais longo — mas o mais emocionante.", "tom": "Orgulho cansado", "camera": "Chegada em Redenção da Serra, Pousada do Japonês", "overlay": "Chegada ~17h"}
         ],
         "gravacao": {"roupa": "Jersey BPMF, proteção UV", "fundo": "Estrada real de terra + casario de Redenção da Serra", "iluminacao": "Luz dura de meio-dia na subida, suave na chegada", "ritmo": "Mais lento e ofegante no trecho de esforço, recupera ritmo na chegada", "legenda": "Sim"},
         "caption": "O dia mais duro da Rota da Luz: 65km 100% em terra até Redenção da Serra, quase 1.500m de subida, zero atalho.\n\n#RotaDaLuz #BPMF #RedençãoDaSerra #GravelBike #MTB #Cicloturismo #Superação"
@@ -213,7 +245,7 @@
           {"n": 2, "funcao": "Parada real", "headline": "RESTAURANTE PÁDUA", "sub": "Almoço real na entrada de Paraibuna", "scene": {"subject": "Bikes parked outside a simple roadside restaurant, cyclists eating at outdoor table", "environment": "Paraibuna town entrance, countryside restaurant", "camera": "Medium candid shot", "light": "Bright midday natural light"}},
           {"n": 3, "funcao": "Técnica", "headline": "COMO VENCER O DIA MAIS DURO", "sub": "Marcha leve, ritmo constante, água a cada 15 minutos", "scene": {"subject": "Cyclist's hands shifting gears, close-up, water bottle visible in frame", "environment": "Steep dirt climb, blurred green landscape background", "camera": "Close-up, shallow depth of field on the handlebar", "light": "Bright natural daylight"}},
           {"n": 4, "funcao": "Apoio", "headline": "MAÇÃ BIKES — FÁBIO", "sub": "O ponto de apoio mecânico da rota, em Paraibuna", "scene": {"subject": "Cyclist getting a quick bike adjustment from a local mechanic", "environment": "Small bike repair stand in Paraibuna", "camera": "Medium shot, documentary style", "light": "Natural daylight, warm tone"}},
-          {"n": 5, "funcao": "CTA", "headline": "65KM DEPOIS", "sub": "Redenção da Serra nos recebe. Amanhã é o dia mais longo.", "scene": {"subject": "Three tired cyclists sitting outside Pousada da Marlene with bikes, smiling", "environment": "Pousada entrance at dusk, city lights starting to turn on", "camera": "Medium wide shot, relaxed candid framing", "light": "Blue hour, warm pousada lights contrasting"}}
+          {"n": 5, "funcao": "CTA", "headline": "65KM DEPOIS", "sub": "Redenção da Serra nos recebe. Amanhã é o dia mais longo.", "scene": {"subject": "Three tired cyclists sitting outside Pousada do Japonês with bikes, smiling", "environment": "Pousada entrance at dusk, city lights starting to turn on", "camera": "Medium wide shot, relaxed candid framing", "light": "Blue hour, warm pousada lights contrasting"}}
         ],
         "caption": "65km 100% em terra, quase 1.500m de subida. Se sobreviveu ao Dia 2, o resto da Rota da Luz é conquista garantida.\n\n#RotaDaLuz #BPMF #Pindamonhangaba #GravelBike #MTB #Superação"
       }

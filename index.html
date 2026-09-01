@@ -381,6 +381,13 @@ function selecionarDia(i){
   });
   carregarGpxDoDia(i);
 }
+function pousadaIcon(color){
+  return L.divIcon({
+    className:'',
+    html:'<div style="background:'+color+';color:#050505;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:13px;border:2px solid #050505;box-shadow:0 0 6px rgba(0,0,0,.6);">🛏️</div>',
+    iconSize:[24,24], iconAnchor:[12,12]
+  });
+}
 function limparGpxLayer(){
   if(gpxLayer){
     if(gpxLayer.eachLayer){ gpxLayer.eachLayer(l=>gpxMapInstance.removeLayer(l)); }
@@ -420,6 +427,12 @@ function carregarGpxDoDia(i){
       }).on('error', function(){
         document.getElementById('gpxMap').insertAdjacentHTML('beforeend', '<p class="muted" style="padding:8px;">Não foi possível carregar um dos trechos agora.</p>');
       }).addTo(group);
+      const pRec = (d.pousadas||[]).find(p=>p.rec && p.coords);
+      if(pRec){
+        L.marker([pRec.coords.lat, pRec.coords.lng], {icon: pousadaIcon(ROUTE_COLORS[idx%ROUTE_COLORS.length])})
+          .bindPopup('<b>🛏️ '+pRec.nome+'</b>'+(pRec.tel?'<br>'+pRec.tel:''))
+          .addTo(group);
+      }
     });
     gpxLayer = group;
     return;
@@ -434,7 +447,8 @@ function carregarGpxDoDia(i){
     '<a class="btn ghost sm" target="_blank" rel="noopener" href="https://www.strava.com/routes/new">🔺 Abrir no Strava</a>'+
     '<a class="btn ghost sm" target="_blank" rel="noopener" href="https://www.komoot.com/">🥾 Abrir no Komoot</a>'+
     '<a class="btn ghost sm" target="_blank" rel="noopener" href="https://www.google.com/maps">📍 Google Maps</a>';
-  gpxLayer = new L.GPX(d.gpxFile, {
+  const soloGroup = L.layerGroup().addTo(gpxMapInstance);
+  new L.GPX(d.gpxFile, {
     async: true,
     marker_options: { startIconUrl:null, endIconUrl:null, shadowUrl:null },
     polyline_options: { color: '#39FF14', weight: 4, opacity: 0.9 }
@@ -442,7 +456,14 @@ function carregarGpxDoDia(i){
     gpxMapInstance.fitBounds(e.target.getBounds());
   }).on('error', function(){
     document.getElementById('gpxMap').insertAdjacentHTML('beforeend', '<p class="muted" style="padding:8px;">Não foi possível carregar o arquivo GPX deste dia agora.</p>');
-  }).addTo(gpxMapInstance);
+  }).addTo(soloGroup);
+  const pRecSolo = (d.pousadas||[]).find(p=>p.rec && p.coords);
+  if(pRecSolo){
+    L.marker([pRecSolo.coords.lat, pRecSolo.coords.lng], {icon: pousadaIcon('#39FF14')})
+      .bindPopup('<b>🛏️ '+pRecSolo.nome+'</b>'+(pRecSolo.tel?'<br>'+pRecSolo.tel:''))
+      .addTo(soloGroup);
+  }
+  gpxLayer = soloGroup;
 }
 
 /* ===================== RENDER: CRONOGRAMA ===================== */
@@ -466,6 +487,12 @@ function renderDays(){
         <p><b>Pontos de referência:</b> ${d.refs}</p>
         ${d.elevNota ? `<p class="muted" style="font-size:11.5px;">ℹ️ ${d.elevNota}</p>` : ''}
         ${d.alerta ? `<div class="alert-box">⚠️ <b>Alerta:</b> ${d.alerta}</div>` : ''}
+        ${d.vespera ? `<div class="parada">
+            <div class="parada-top"><span class="km-badge">véspera</span><b>${d.vespera.data}</b></div>
+            <p style="font-size:12.5px;">${d.vespera.trem}</p>
+            <p style="font-size:12.5px;"><b>Pernoite:</b> ${d.vespera.pousada.nome} — ${d.vespera.pousada.endereco}</p>
+            ${d.vespera.pousada.tel?`<a class="btn sm" href="tel:${d.vespera.pousada.tel.replace(/\\D/g,'')}">📞 ${d.vespera.pousada.tel}</a>`:''}
+          </div>` : ''}
         <label style="display:flex;align-items:center;gap:8px;margin:10px 0;font-size:13px;">
           <input type="checkbox" ${state.daysDone[d.n]?'checked':''} onchange="toggleDayDone(${d.n}, this.checked)">
           Marcar Dia ${d.n} como concluído
@@ -484,6 +511,7 @@ function renderDays(){
             <div class="pousada-top"><b>${p.nome}</b>${p.rec?'<span class="tag-rec">Top</span>':''}</div>
             <p style="font-size:12.5px;">${p.desc}</p>
             ${p.tel?`<a class="btn sm" href="tel:${p.tel.replace(/\\D/g,'')}">📞 ${p.tel}</a>`:'<span class="muted">Telefone não confirmado</span>'}
+            ${p.telObs?`<p class="muted" style="font-size:11px;margin-top:4px;">${p.telObs}</p>`:''}
           </div>`).join('')}
       </div>
     </details>`).join('');
@@ -494,6 +522,8 @@ function toggleDayDone(n, checked){ state.daysDone[n]=checked; saveState(); rend
 function renderChecklist(){
   const c = document.getElementById('checklistContainer');
   let html=''; let total=0, done=0;
+
+  html += `<h3 style="margin:4px 0 8px;">🎒 Bagagem geral (leva 1x, fica na mala)</h3>`;
   Object.entries(AVENTURA.checklist).forEach(([cat, items])=>{
     html += `<div class="card"><h2>${cat}</h2>`;
     items.forEach((item,i)=>{
@@ -506,6 +536,45 @@ function renderChecklist(){
     });
     html += `</div>`;
   });
+
+  const diasComItens = AVENTURA.dias.filter(d=>d.itensDoDia);
+  if(diasComItens.length){
+    html += `<h3 style="margin:18px 0 8px;">🚴 O que levar em cada dia de pedal</h3>`;
+    diasComItens.forEach(d=>{
+      const itens = d.itensDoDia;
+      let dayTotal=0, dayDone=0;
+      const cats = Object.entries(itens).filter(([cat])=>cat!=='_confianca');
+      cats.forEach(([cat, items])=>{
+        items.forEach((item,i)=>{
+          const key = 'dia'+d.n+'::'+cat+'::'+i;
+          total++; dayTotal++;
+          if(state.checklist[key]){ done++; dayDone++; }
+        });
+      });
+      html += `<details class="day-card" ${d.n===1?'open':''}>
+        <summary>
+          <div class="day-title-wrap">
+            <div class="day-num">${d.n}</div>
+            <div><h3 style="margin-bottom:2px;">${d.from} → ${d.to}</h3><small class="muted">${dayDone} de ${dayTotal} itens conferidos</small></div>
+          </div>
+        </summary>
+        <div class="day-body">
+          ${itens._confianca ? `<p class="muted" style="font-size:11.5px;">ℹ️ ${itens._confianca}</p>` : ''}
+          ${cats.map(([cat, items])=>`
+            <h3 style="margin-top:12px;">${cat}</h3>
+            ${items.map((item,i)=>{
+              const key = 'dia'+d.n+'::'+cat+'::'+i;
+              const checked = !!state.checklist[key];
+              return `<label class="check-item ${checked?'done':''}">
+                <input type="checkbox" ${checked?'checked':''} onchange="toggleCheck('${key.replace(/'/g,"\\'")}', this.checked)">
+                <span>${item}</span></label>`;
+            }).join('')}
+          `).join('')}
+        </div>
+      </details>`;
+    });
+  }
+
   c.innerHTML = html;
   const pct = total?Math.round((done/total)*100):0;
   document.getElementById('checkProgressBar').style.width = pct+'%';
