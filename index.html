@@ -180,6 +180,7 @@ th,td{text-align:left;padding:8px 4px;border-bottom:1px solid #1a1d23;}
         <button class="btn block" id="downloadBtn" onclick="baixarAventura()">⬇️ Baixar Aventura</button>
         <div id="downloadStatus"></div>
       </div>
+      <p style="text-align:center;margin-top:4px;"><a href="#" class="muted" style="font-size:11px;text-decoration:none;" onclick="showTab('admin');return false;">⚙️ Admin</a></p>
     </section>
 
     <!-- ROTA / MAPA -->
@@ -217,7 +218,8 @@ th,td{text-align:left;padding:8px 4px;border-bottom:1px solid #1a1d23;}
     <section class="tab" id="tab-gastos">
       <div class="card">
         <h2>Gastos da turma</h2>
-        <p class="muted">Cada celular registra os próprios gastos (o app funciona offline, sem sincronizar entre aparelhos). Comparem os totais no fim do dia e usem o Backup para juntar tudo se quiser.</p>
+        <p class="muted">Lançamentos sincronizados em tempo real — o que você adicionar aparece no celular de todo mundo da turma. Sem sinal no momento, o app guarda e sincroniza assim que voltar.</p>
+        <p id="gastosSyncMsg" class="muted" style="font-size:11.5px;">Conectando…</p>
         <label class="field">Descrição</label><input id="expDesc" placeholder="Ex: Jantar em Redenção da Serra">
         <label class="field">Valor (R$)</label><input id="expValor" type="number" step="0.01">
         <label class="field">Categoria</label>
@@ -252,6 +254,30 @@ th,td{text-align:left;padding:8px 4px;border-bottom:1px solid #1a1d23;}
       </div>
       <div id="citiesContainer"></div>
     </section>
+
+    <!-- ADMIN -->
+    <section class="tab" id="tab-admin">
+      <div class="card" id="adminGate">
+        <h2>🔒 Admin</h2>
+        <p class="muted">Área restrita — edição dos integrantes da turma.</p>
+        <label class="field">Senha</label>
+        <input id="adminPin" type="password" placeholder="Senha de admin" autocomplete="off" onkeydown="if(event.key==='Enter')tryAdminPin()">
+        <div id="adminError" style="color:#ff6b6b;font-size:12px;margin-top:2px;"></div>
+        <button class="btn block" style="margin-top:10px;" onclick="tryAdminPin()">Entrar</button>
+      </div>
+      <div class="card" id="adminPanel" style="display:none;">
+        <h2>👥 Integrantes da turma</h2>
+        <p class="muted" style="font-size:12.5px;">Esses nomes aparecem na divisão de Gastos. "Salvar neste aparelho" atualiza só o seu celular, na hora. Pra valer pra todo mundo — inclusive quem ainda vai digitar o PIN pela primeira vez — baixe o <code>turmas.json</code> atualizado e suba no GitHub, do mesmo jeito de sempre.</p>
+        <div id="adminPeopleList"></div>
+        <button class="btn ghost sm" onclick="adminAddPerson()">+ Adicionar integrante</button>
+        <button class="btn block" style="margin-top:14px;" onclick="adminSavePeople()">💾 Salvar neste aparelho</button>
+        <div id="adminSaveMsg" class="muted" style="font-size:12px;margin-top:6px;"></div>
+        <hr style="border:none;border-top:1px solid #1a1d23;margin:16px 0;">
+        <h3 style="margin-bottom:6px;">Publicar pra todo mundo</h3>
+        <p class="muted" style="font-size:11.5px;">Gera o arquivo <code>turmas.json</code> já com os nomes novos, pronto pra subir no GitHub.</p>
+        <button class="btn ghost sm" onclick="adminDownloadTurmas()">⬇️ Baixar turmas.json atualizado</button>
+      </div>
+    </section>
   </div>
 
   <nav class="bottom">
@@ -267,7 +293,36 @@ th,td{text-align:left;padding:8px 4px;border-bottom:1px solid #1a1d23;}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/leaflet-gpx@1.7.0/gpx.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
 <script>
+/* ===================== FIREBASE (gastos compartilhados) ===================== */
+/* Preencha com as chaves do SEU projeto Firebase (console.firebase.google.com > Configurações
+   do projeto > Geral > Seus apps > SDK setup and configuration > Config). Essas chaves não são
+   segredo — o Firebase foi desenhado pra elas ficarem visíveis no navegador de quem usa o app.
+   Quem protege os dados de verdade são as REGRAS do Realtime Database, configuradas no console. */
+const FIREBASE_CONFIG = {
+  apiKey: "COLE_AQUI",
+  authDomain: "COLE_AQUI",
+  databaseURL: "COLE_AQUI",
+  projectId: "COLE_AQUI",
+  storageBucket: "COLE_AQUI",
+  messagingSenderId: "COLE_AQUI",
+  appId: "COLE_AQUI"
+};
+let fbDb = null;
+let fbExpensesRef = null;
+function fbConfigPreenchido(){ return !!FIREBASE_CONFIG.databaseURL && FIREBASE_CONFIG.databaseURL !== 'COLE_AQUI'; }
+function initFirebase(){
+  if(!fbConfigPreenchido()) return false;
+  try{
+    if(typeof firebase === 'undefined') return false;
+    if(!firebase.apps.length) firebase.initializeApp(FIREBASE_CONFIG);
+    fbDb = firebase.database();
+    return true;
+  }catch(e){ console.error('Firebase init falhou', e); return false; }
+}
+
 /* ===================== BOOTSTRAP / PIN GATE ===================== */
 let TURMAS = null;
 let TURMA = null;
@@ -301,11 +356,90 @@ async function enterTurma(t){
   document.getElementById('appShell').style.display = 'block';
   renderAll();
   checkOfflineStatus();
+  setupExpensesSync();
+}
+function setupExpensesSync(){
+  const msgEl = document.getElementById('gastosSyncMsg');
+  if(!initFirebase()){
+    if(msgEl) msgEl.textContent = '⚠️ Gastos ainda não configurados pra sincronizar entre aparelhos — cada celular guarda só o próprio lançamento.';
+    return;
+  }
+  if(fbExpensesRef) fbExpensesRef.off();
+  fbExpensesRef = fbDb.ref('turmas/'+TURMA.id+'/expenses');
+  fbExpensesRef.on('value', (snap)=>{
+    const val = snap.val() || {};
+    state.expenses = Object.keys(val).map(key=>Object.assign({id:key}, val[key]))
+      .sort((a,b)=>(a.criadoEm||0)-(b.criadoEm||0));
+    saveState();
+    renderGastos();
+    if(msgEl) msgEl.textContent = '🟢 Sincronizado — todo mundo na turma vê os mesmos lançamentos.';
+  }, (err)=>{
+    console.warn('Firebase gastos:', err);
+    if(msgEl) msgEl.textContent = '🔴 Sem conexão com o servidor agora — mostrando o último dado sincronizado neste aparelho.';
+  });
 }
 function logoutTurma(){
   localStorage.removeItem('bpmf_ca_turma_atual');
   location.reload();
 }
+
+/* ===================== ADMIN ===================== */
+/* Aviso: este é um app estático (sem servidor) — esta senha fica no código-fonte
+   e é visível pra qualquer um que abrir o "Ver código-fonte" do navegador. Ela serve
+   só pra afastar cliques por acaso de quem tá usando o app, não é segurança de verdade. */
+const ADMIN_PASSWORD = 'BPMF12';
+function tryAdminPin(){
+  const val = document.getElementById('adminPin').value;
+  const err = document.getElementById('adminError');
+  if(val === ADMIN_PASSWORD){
+    err.textContent = '';
+    document.getElementById('adminPin').value = '';
+    document.getElementById('adminGate').style.display = 'none';
+    document.getElementById('adminPanel').style.display = 'block';
+    renderAdminPeople();
+  } else {
+    err.textContent = 'Senha incorreta.';
+  }
+}
+function renderAdminPeople(){
+  const list = document.getElementById('adminPeopleList');
+  list.innerHTML = state.people.map((p,i)=>`
+    <div style="display:flex;gap:8px;align-items:center;">
+      <input type="text" value="${p.replace(/"/g,'&quot;')}" class="admin-person-input" data-idx="${i}" style="flex:1;margin-bottom:8px;">
+      <button class="btn ghost sm" style="margin-bottom:8px;" onclick="adminRemovePerson(${i})">✕</button>
+    </div>`).join('');
+}
+function adminAddPerson(){
+  state.people.push('Novo integrante');
+  renderAdminPeople();
+}
+function adminRemovePerson(i){
+  if(state.people.length<=1){ alert('Precisa ter pelo menos 1 integrante.'); return; }
+  state.people.splice(i,1);
+  renderAdminPeople();
+}
+function adminSavePeople(){
+  const inputs = document.querySelectorAll('.admin-person-input');
+  const names = Array.from(inputs).map(inp=>inp.value.trim()).filter(Boolean);
+  const msg = document.getElementById('adminSaveMsg');
+  if(names.length===0){ msg.textContent = 'Precisa de pelo menos 1 nome.'; return; }
+  state.people = names;
+  saveState();
+  renderGastosSetup();
+  renderAdminPeople();
+  msg.textContent = '✅ Salvo neste aparelho. Lembre de baixar e subir o turmas.json pra valer pros outros.';
+}
+function adminDownloadTurmas(){
+  const t = TURMAS.turmas.find(t=>t.id===TURMA.id);
+  if(t) t.participantesPadrao = state.people;
+  const blob = new Blob([JSON.stringify(TURMAS, null, 2)], {type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'turmas.json';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
 boot();
 
 /* ===================== STATE ===================== */
@@ -694,19 +828,33 @@ function addExpense(){
   const quem = document.getElementById('expQuem').value;
   const divide = document.getElementById('expDivide').value;
   if(!desc||!valor||valor<=0){ alert('Preencha descrição e valor válido.'); return; }
-  state.expenses.push({id:Date.now(), desc, valor, cat, quem, divide});
-  saveState();
+  const novo = {desc, valor, cat, quem, divide, criadoEm: Date.now()};
   document.getElementById('expDesc').value=''; document.getElementById('expValor').value='';
-  renderGastos();
+  if(fbExpensesRef){
+    fbExpensesRef.push(novo); // o listener 'value' atualiza a tela sozinho (inclusive offline: entra na fila e sincroniza quando voltar sinal)
+  } else {
+    novo.id = String(Date.now()); // string pra ficar consistente com o onclick="delExpense('...')" e com as chaves do Firebase
+    state.expenses.push(novo);
+    saveState();
+    renderGastos();
+  }
 }
-function delExpense(id){ state.expenses = state.expenses.filter(e=>e.id!==id); saveState(); renderGastos(); }
+function delExpense(id){
+  if(fbExpensesRef){
+    fbExpensesRef.child(id).remove();
+  } else {
+    state.expenses = state.expenses.filter(e=>e.id!==id);
+    saveState();
+    renderGastos();
+  }
+}
 function renderGastos(){
   renderGastosSetup();
   const tbody = document.getElementById('expenseTableBody');
   tbody.innerHTML = state.expenses.map(e=>`
     <tr><td>${e.desc}<br><small class="muted">${e.divide==='todos'?'dividido':'individual'}</small></td>
     <td>${e.cat}</td><td>${e.quem}</td><td class="num">R$ ${e.valor.toFixed(2)}</td>
-    <td><button class="del-btn" onclick="delExpense(${e.id})">✕</button></td></tr>`).join('') ||
+    <td><button class="del-btn" onclick="delExpense('${e.id}')">✕</button></td></tr>`).join('') ||
     '<tr><td colspan="5" class="muted">Nenhum gasto lançado ainda.</td></tr>';
   const total = state.expenses.reduce((s,e)=>s+e.valor,0);
   document.getElementById('totalGasto').textContent = 'R$ '+total.toFixed(2);
