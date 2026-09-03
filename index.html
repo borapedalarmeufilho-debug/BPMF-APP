@@ -190,6 +190,8 @@ th,td{text-align:left;padding:8px 4px;border-bottom:1px solid #1a1d23;}
         <p class="muted" id="rotaFonte"></p>
         <div class="day-pick" id="dayPicker"></div>
         <div id="gpxMap"></div>
+        <button class="btn ghost sm" id="locBtn" style="margin-top:8px;" onclick="toggleMinhaLocalizacao()">📍 Mostrar minha localização</button>
+        <p id="locMsg" class="muted" style="font-size:11px;margin-top:4px;"></p>
         <div class="gpx-stats" id="gpxStats"></div>
         <div class="route-legend" id="routeLegend"></div>
         <div class="route-legend" id="pontosToggle"></div>
@@ -515,11 +517,67 @@ function renderRota(){
     + '<button class="'+(currentDayIdx==='all'?'active':'')+'" onclick="selecionarDia(\'all\')">Completa</button>';
   if(!gpxMapInstance){
     gpxMapInstance = L.map('gpxMap').setView([-23.2,-45.7], 9);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution:'&copy; OpenStreetMap contributors', maxZoom: 18
+      /* subdomínio fixo (só "a", sem {s} alternando a/b/c) de propósito: o download offline
+         (baixarTilesRota) guarda cada tile com essa mesma URL exata no cache; se o mapa
+         pedisse ora a.tile ora b.tile ora c.tile, metade dos pedidos não bateria com o cache
+         guardado e o mapa ficaria com buracos quando offline. */
     }).addTo(gpxMapInstance);
   }
   carregarGpxDoDia(currentDayIdx);
+}
+
+/* ===================== MINHA LOCALIZAÇÃO (GPS — funciona sem internet) ===================== */
+let locWatching = false;
+let myLocMarker = null;
+let myLocAccuracy = null;
+function myLocIcon(){
+  return L.divIcon({
+    className: '',
+    html: '<div style="width:16px;height:16px;border-radius:50%;background:#1E90FF;border:3px solid #fff;box-shadow:0 0 6px rgba(30,144,255,.9);"></div>',
+    iconSize: [16,16], iconAnchor: [8,8]
+  });
+}
+function toggleMinhaLocalizacao(){
+  const btn = document.getElementById('locBtn');
+  const msg = document.getElementById('locMsg');
+  if(!gpxMapInstance) return;
+  if(locWatching){
+    gpxMapInstance.stopLocate();
+    gpxMapInstance.off('locationfound', onMinhaLocalizacaoEncontrada);
+    gpxMapInstance.off('locationerror', onMinhaLocalizacaoErro);
+    if(myLocMarker){ gpxMapInstance.removeLayer(myLocMarker); myLocMarker = null; }
+    if(myLocAccuracy){ gpxMapInstance.removeLayer(myLocAccuracy); myLocAccuracy = null; }
+    locWatching = false;
+    btn.textContent = '📍 Mostrar minha localização';
+    msg.textContent = '';
+    return;
+  }
+  msg.textContent = 'Procurando sinal de GPS…';
+  gpxMapInstance.on('locationfound', onMinhaLocalizacaoEncontrada);
+  gpxMapInstance.on('locationerror', onMinhaLocalizacaoErro);
+  gpxMapInstance.locate({watch:true, enableHighAccuracy:true, setView:false, maximumAge:5000});
+  locWatching = true;
+  btn.textContent = '📍 Ocultar minha localização';
+}
+function onMinhaLocalizacaoEncontrada(e){
+  const msg = document.getElementById('locMsg');
+  msg.textContent = '🟢 Localização ativa — funciona mesmo sem internet (usa o GPS do aparelho).';
+  if(!myLocMarker){
+    myLocMarker = L.marker(e.latlng, {icon: myLocIcon(), zIndexOffset: 1000}).addTo(gpxMapInstance);
+  } else {
+    myLocMarker.setLatLng(e.latlng);
+  }
+  if(!myLocAccuracy){
+    myLocAccuracy = L.circle(e.latlng, {radius: e.accuracy, color:'#1E90FF', weight:1, fillOpacity:0.08}).addTo(gpxMapInstance);
+  } else {
+    myLocAccuracy.setLatLng(e.latlng).setRadius(e.accuracy);
+  }
+}
+function onMinhaLocalizacaoErro(e){
+  const msg = document.getElementById('locMsg');
+  msg.textContent = '⚠️ Não consegui acessar sua localização (' + e.message + '). Verifique se o GPS do celular está ligado e se você permitiu o navegador usar a localização.';
 }
 function selecionarDia(i){
   currentDayIdx = i;
@@ -967,10 +1025,68 @@ function checkOfflineStatus(){
 window.addEventListener('online', ()=>document.getElementById('offlineBanner')?.classList.remove('show'));
 window.addEventListener('offline', ()=>{ const b=document.getElementById('offlineBanner'); if(b){ b.textContent='📴 Você está offline — usando o conteúdo baixado.'; b.classList.add('show'); }});
 
+/* ===================== TILES OFFLINE DO MAPA ===================== */
+/* Baixa antecipadamente as imagens do mapa (fundo de ruas/terreno) que cobrem o corredor
+   da rota, pra funcionarem sem sinal. Usa sempre a.tile.openstreetmap.org (mesmo subdomínio
+   fixo do L.tileLayer lá em cima) pra garantir que a URL guardada no cache seja EXATAMENTE
+   a mesma que o mapa vai pedir durante a pedalada. */
+function deg2tile(lat, lon, zoom){
+  const latRad = lat * Math.PI/180;
+  const n = Math.pow(2, zoom);
+  const x = Math.floor((lon + 180) / 360 * n);
+  const y = Math.floor((1 - Math.log(Math.tan(latRad) + 1/Math.cos(latRad)) / Math.PI) / 2 * n);
+  return [x, y];
+}
+async function coletarTilesDaRota(){
+  const ZOOMS = [12, 13, 14, 15];
+  const BUFFER = 1; // tiles vizinhos ao redor de cada ponto amostrado, pra cobrir a largura da estrada/tela
+  const tileSet = new Set();
+  for(const d of AVENTURA.dias){
+    let text;
+    try{ text = await (await fetch(d.gpxFile)).text(); }catch(e){ continue; }
+    const doc = new DOMParser().parseFromString(text, 'text/xml');
+    const trkpts = doc.getElementsByTagName('trkpt');
+    const step = Math.max(1, Math.floor(trkpts.length / 1000)); // amostra ~1000 pontos por dia, suficiente pro corredor
+    for(let i=0; i<trkpts.length; i+=step){
+      const lat = parseFloat(trkpts[i].getAttribute('lat'));
+      const lon = parseFloat(trkpts[i].getAttribute('lon'));
+      if(isNaN(lat) || isNaN(lon)) continue;
+      for(const z of ZOOMS){
+        const [tx, ty] = deg2tile(lat, lon, z);
+        for(let dx=-BUFFER; dx<=BUFFER; dx++){
+          for(let dy=-BUFFER; dy<=BUFFER; dy++){
+            tileSet.add(z+'/'+(tx+dx)+'/'+(ty+dy));
+          }
+        }
+      }
+    }
+  }
+  return Array.from(tileSet);
+}
+async function baixarTilesOffline(tiles, cache, onProgress){
+  const CONCURRENCY = 6;
+  let idx = 0, ok = 0, falhou = 0;
+  async function worker(){
+    while(idx < tiles.length){
+      const meu = idx++;
+      const [z,x,y] = tiles[meu].split('/');
+      const url = `https://a.tile.openstreetmap.org/${z}/${x}/${y}.png`;
+      try{
+        const resp = await fetch(url, {mode:'no-cors'});
+        await cache.put(url, resp);
+        ok++;
+      }catch(e){ falhou++; }
+      onProgress(ok+falhou, tiles.length, falhou);
+    }
+  }
+  await Promise.all(Array.from({length:CONCURRENCY}, worker));
+  return {ok, falhou};
+}
+
 async function baixarAventura(){
   const statusEl = document.getElementById('downloadStatus');
   if(!('caches' in window)){ statusEl.textContent = 'Seu navegador não suporta cache offline.'; return; }
-  statusEl.textContent = 'Baixando…';
+  statusEl.textContent = 'Baixando conteúdo da aventura…';
   try{
     const cache = await caches.open('bpmf-ca-v2');
     const urls = [
@@ -982,7 +1098,18 @@ async function baixarAventura(){
       'https://cdn.jsdelivr.net/npm/leaflet-gpx@1.7.0/gpx.js'
     ];
     await cache.addAll(urls);
-    statusEl.textContent = '✅ Aventura baixada — funciona sem internet a partir de agora. (Obs.: os tiles do mapa interativo, fora da área já visualizada, ainda dependem de sinal — versão 2 vai resolver isso.)';
+
+    statusEl.textContent = 'Baixando mapa offline (imagens do fundo do mapa)… isso pode levar alguns minutos, deixe o celular com WiFi.';
+    const tiles = await coletarTilesDaRota();
+    const {ok, falhou} = await baixarTilesOffline(tiles, cache, (feito, total)=>{
+      statusEl.textContent = `Baixando mapa offline… ${feito}/${total} imagens`;
+    });
+
+    if(falhou === 0){
+      statusEl.textContent = `✅ Aventura baixada com mapa offline completo (${ok} imagens do mapa) — funciona sem internet, incluindo o fundo do mapa na área da rota. Mesmo assim, teste em modo avião antes de sair de casa.`;
+    } else {
+      statusEl.textContent = `⚠️ Aventura baixada, mas ${falhou} de ${tiles.length} imagens do mapa não baixaram (rede instável). O mapa pode ter alguns buracos offline nessas áreas. Tente baixar de novo com WiFi estável.`;
+    }
   }catch(e){
     statusEl.textContent = '⚠️ Não deu pra baixar tudo agora ('+e.message+'). Tente novamente com internet estável.';
   }
